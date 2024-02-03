@@ -1,0 +1,21 @@
+#Not yet used, to be implemented with K8S
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service-label-key: service-label-value 
+  name: service-name
+spec:
+  type: ClusterIP
+  ports:
+  - name: service-port-name
+    port: 8080
+    protocol: TCP
+  selector:
+     personal-site-key : personal-site-value 
+
+
+#for internal communicating to angualar application
+# $ kubectl apply -f SPA-service.yaml
+# > service/service-name created

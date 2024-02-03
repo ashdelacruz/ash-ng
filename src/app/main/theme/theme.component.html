@@ -1,0 +1,754 @@
+<div class="theme-container">
+  <div class="color-picker-container">
+    <mat-card
+      [ngStyle]="{
+        'background-color':
+          'rgb(' + primaryRed + ', ' + primaryGreen + ', ' + primaryBlue + ')'
+      }"
+    >
+      <mat-card-content>
+        <h2
+          class="example-h2"
+          [ngStyle]="{
+            color:
+              primaryRed > 128 || primaryGreen > 128 || primaryBlue > 128
+                ? 'black'
+                : 'white'
+          }"
+        >
+          Primary Color
+        </h2>
+
+        <section class="hex-section" [formGroup]="colorForm">
+          <mat-form-field class="hex-field">
+            <mat-label for="primaryHex">HEX</mat-label>
+            <input
+              matInput
+              formControlName="primaryHex"
+              (input)="onPrimaryHexInput()"
+            />
+          </mat-form-field>
+        </section>
+
+        <section class="rgb-section">
+          <div class="rgb-picker">
+            <mat-form-field class="rgb-field">
+              <mat-label>RED</mat-label>
+              <input matInput [(ngModel)]="primaryRed" type="number" />
+            </mat-form-field>
+            <mat-slider
+              class="red-slider"
+              [disabled]="disabled"
+              [max]="max"
+              [min]="min"
+              [step]="step"
+              [discrete]="thumbLabel"
+              [showTickMarks]="showTicks"
+              (change)="onPrimarySliderChange()"
+              [color]="
+                primaryRed > 128 || primaryGreen > 128 || primaryBlue > 128
+                  ? 'primary'
+                  : 'accent'
+              "
+            >
+              <input matSliderThumb [(ngModel)]="primaryRed" #slider />
+            </mat-slider>
+          </div>
+          <div class="rgb-picker">
+            <mat-form-field class="rgb-field">
+              <mat-label>GREEN</mat-label>
+              <input matInput [(ngModel)]="primaryGreen" type="number" />
+            </mat-form-field>
+            <mat-slider
+              class="green-slider"
+              [disabled]="disabled"
+              [max]="max"
+              [min]="min"
+              [step]="step"
+              [discrete]="thumbLabel"
+              [showTickMarks]="showTicks"
+              (change)="onPrimarySliderChange()"
+              [color]="
+                primaryRed > 128 || primaryGreen > 128 || primaryBlue > 128
+                  ? 'primary'
+                  : 'accent'
+              "
+            >
+              <input matSliderThumb [(ngModel)]="primaryGreen" #slider />
+            </mat-slider>
+          </div>
+          <div class="rgb-picker">
+            <mat-form-field class="rgb-field">
+              <mat-label>BLUE</mat-label>
+              <input matInput [(ngModel)]="primaryBlue" type="number" />
+            </mat-form-field>
+            <mat-slider
+              class="blue-slider"
+              [disabled]="disabled"
+              [max]="max"
+              [min]="min"
+              [step]="step"
+              [discrete]="thumbLabel"
+              [showTickMarks]="showTicks"
+              (change)="onPrimarySliderChange()"
+              [color]="
+                primaryRed > 128 || primaryGreen > 128 || primaryBlue > 128
+                  ? 'primary'
+                  : 'accent'
+              "
+            >
+              <input matSliderThumb [(ngModel)]="primaryBlue" #slider />
+            </mat-slider>
+          </div>
+        </section>
+      </mat-card-content>
+    </mat-card>
+    <mat-card
+      [ngStyle]="{
+        'background-color':
+          'rgb(' + accentRed + ', ' + accentGreen + ', ' + accentBlue + ')'
+      }"
+    >
+      <mat-card-content>
+        <h2
+          class="example-h2"
+          [ngStyle]="{
+            color:
+              accentRed > 128 || accentGreen > 128 || accentBlue > 128
+                ? 'black'
+                : 'white'
+          }"
+        >
+          Accent Color
+        </h2>
+
+        <section class="hex-section" [formGroup]="colorForm">
+          <mat-form-field class="hex-field">
+            <mat-label for="accentHex">HEX</mat-label>
+            <input
+              matInput
+              formControlName="accentHex"
+              (input)="onAccentHexInput()"
+            />
+          </mat-form-field>
+        </section>
+
+        <section class="rgb-section">
+          <div class="rgb-picker">
+            <mat-form-field class="rgb-field">
+              <mat-label>RED</mat-label>
+              <input matInput [(ngModel)]="accentRed" type="number" />
+            </mat-form-field>
+            <mat-slider
+              class="red-slider"
+              [disabled]="disabled"
+              [max]="max"
+              [min]="min"
+              [step]="step"
+              [discrete]="thumbLabel"
+              [showTickMarks]="showTicks"
+              (change)="onAccentSliderChange()"
+              [color]="
+                accentRed > 128 || accentGreen > 128 || accentBlue > 128
+                  ? 'primary'
+                  : 'accent'
+              "
+            >
+              <input matSliderThumb [(ngModel)]="accentRed" #slider />
+            </mat-slider>
+          </div>
+          <div class="rgb-picker">
+            <mat-form-field class="rgb-field">
+              <mat-label>GREEN</mat-label>
+              <input matInput [(ngModel)]="accentGreen" type="number" />
+            </mat-form-field>
+            <mat-slider
+              class="green-slider"
+              [disabled]="disabled"
+              [max]="max"
+              [min]="min"
+              [step]="step"
+              [discrete]="thumbLabel"
+              [showTickMarks]="showTicks"
+              (change)="onAccentSliderChange()"
+              [color]="
+                accentRed > 128 || accentGreen > 128 || accentBlue > 128
+                  ? 'primary'
+                  : 'accent'
+              "
+            >
+              <input matSliderThumb [(ngModel)]="accentGreen" #slider />
+            </mat-slider>
+          </div>
+          <div class="rgb-picker">
+            <mat-form-field class="rgb-field">
+              <mat-label>BLUE</mat-label>
+              <input matInput [(ngModel)]="accentBlue" type="number" />
+            </mat-form-field>
+            <mat-slider
+              class="blue-slider"
+              [disabled]="disabled"
+              [max]="max"
+              [min]="min"
+              [step]="step"
+              [discrete]="thumbLabel"
+              [showTickMarks]="showTicks"
+              (change)="onAccentSliderChange()"
+              [color]="
+                accentRed > 128 || accentGreen > 128 || accentBlue > 128
+                  ? 'primary'
+                  : 'accent'
+              "
+            >
+              <input matSliderThumb [(ngModel)]="accentBlue" #slider />
+            </mat-slider>
+          </div>
+        </section>
+      </mat-card-content>
+    </mat-card>
+    <mat-card
+      [ngStyle]="{
+        'background-color':
+          'rgb(' + warnRed + ', ' + warnGreen + ', ' + warnBlue + ')'
+      }"
+    >
+      <mat-card-content>
+        <h2
+          class="example-h2"
+          [ngStyle]="{
+            color:
+              warnRed > 128 || warnGreen > 128 || warnBlue > 128
+                ? 'black'
+                : 'white'
+          }"
+        >
+          Warn Color
+        </h2>
+
+        <section class="hex-section" [formGroup]="colorForm">
+          <mat-form-field class="hex-field">
+            <mat-label for="warnHex">HEX</mat-label>
+            <input
+              matInput
+              formControlName="warnHex"
+              (input)="onWarnHexInput()"
+            />
+          </mat-form-field>
+        </section>
+
+        <section class="rgb-section">
+          <div class="rgb-picker">
+            <mat-form-field class="rgb-field">
+              <mat-label>RED</mat-label>
+              <input matInput [(ngModel)]="warnRed" type="number" />
+            </mat-form-field>
+            <mat-slider
+              class="red-slider"
+              [disabled]="disabled"
+              [max]="max"
+              [min]="min"
+              [step]="step"
+              [discrete]="thumbLabel"
+              [showTickMarks]="showTicks"
+              (change)="onWarnSliderChange()"
+              [color]="
+                warnRed > 128 || warnGreen > 128 || warnBlue > 128
+                  ? 'primary'
+                  : 'accent'
+              "
+            >
+              <input matSliderThumb [(ngModel)]="warnRed" #slider />
+            </mat-slider>
+          </div>
+          <div class="rgb-picker">
+            <mat-form-field class="rgb-field">
+              <mat-label>GREEN</mat-label>
+              <input matInput [(ngModel)]="warnGreen" type="number" />
+            </mat-form-field>
+            <mat-slider
+              class="green-slider"
+              [disabled]="disabled"
+              [max]="max"
+              [min]="min"
+              [step]="step"
+              [discrete]="thumbLabel"
+              [showTickMarks]="showTicks"
+              (change)="onWarnSliderChange()"
+              [color]="
+                warnRed > 128 || warnGreen > 128 || warnBlue > 128
+                  ? 'primary'
+                  : 'accent'
+              "
+            >
+              <input matSliderThumb [(ngModel)]="warnGreen" #slider />
+            </mat-slider>
+          </div>
+          <div class="rgb-picker">
+            <mat-form-field class="rgb-field">
+              <mat-label>BLUE</mat-label>
+              <input matInput [(ngModel)]="warnBlue" type="number" />
+            </mat-form-field>
+            <mat-slider
+              class="blue-slider"
+              [disabled]="disabled"
+              [max]="max"
+              [min]="min"
+              [step]="step"
+              [discrete]="thumbLabel"
+              [showTickMarks]="showTicks"
+              (change)="onWarnSliderChange()"
+              [color]="
+                warnRed > 128 || warnGreen > 128 || warnBlue > 128
+                  ? 'primary'
+                  : 'accent'
+              "
+            >
+              <input matSliderThumb [(ngModel)]="warnBlue" #slider />
+            </mat-slider>
+          </div>
+        </section>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="preview-container">
+    <body class="light-preview-body mat-typography midnight-cheese">
+      <div class="light-preview">
+        <p>
+          Real pixel, color applied through CSS <code>background-color</code>:
+        </p>
+        <!-- <div class="pixel realPixel"></div> -->
+        <div class="logo-preview">
+          <img
+            class="logo-icon-preview real"
+            [ngStyle]="{
+              'background-color':
+                'rgb(' +
+                primaryRed +
+                ', ' +
+                primaryGreen +
+                ', ' +
+                primaryBlue +
+                ')'
+            }"
+            [src]="darkModeLogoPath"
+          />
+
+          <mat-form-field>
+            <mat-label>Logo</mat-label>
+            <mat-select [(value)]="darkModeLogoPath">
+              <mat-option
+                [value]="option.darkPath"
+                *ngFor="let option of logoOptions"
+                >{{ option.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="button-container">
+          <button
+            mat-raised-button
+            [ngStyle]="{
+              'background-color':
+                'rgb(' +
+                primaryRed +
+                ', ' +
+                primaryGreen +
+                ', ' +
+                primaryBlue +
+                ')',
+              color:
+                primaryRed > 128 || primaryGreen > 128 || primaryBlue > 128
+                  ? 'black'
+                  : 'white'
+            }"
+            type="button"
+            class="real"
+          >
+            Primary Raised Button
+          </button>
+          <button
+            mat-button
+            type="button"
+            class="real"
+            [ngStyle]="{
+              color:
+                'rgb(' +
+                primaryRed +
+                ', ' +
+                primaryGreen +
+                ', ' +
+                primaryBlue +
+                ')'
+            }"
+          >
+            Primary Button
+          </button>
+          <button
+            mat-icon-button
+            type="button"
+            class="real"
+            [ngStyle]="{
+              color:
+                'rgb(' +
+                primaryRed +
+                ', ' +
+                primaryGreen +
+                ', ' +
+                primaryBlue +
+                ')'
+            }"
+          >
+            <mat-icon class="auto-flip">{{ "information" }}</mat-icon>
+          </button>
+          <mat-checkbox
+          ></mat-checkbox>
+          <mat-slide-toggle>
+
+          </mat-slide-toggle>
+          <mat-radio-group>
+
+            <mat-radio-button checked="false"> </mat-radio-button>
+            <mat-radio-button checked="true"> </mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="button-container">
+          <button
+            mat-raised-button
+            type="button"
+            class="real"
+            [ngStyle]="{
+              'background-color':
+                'rgb(' +
+                accentRed +
+                ', ' +
+                accentGreen +
+                ', ' +
+                accentBlue +
+                ')',
+              color:
+                accentRed > 128 || accentGreen > 128 || accentBlue > 128
+                  ? 'black'
+                  : 'white'
+            }"
+          >
+            Accent Raised Button
+          </button>
+
+          <button
+            mat-button
+            type="button"
+            class="real"
+            [ngStyle]="{
+              color:
+                'rgb(' +
+                accentRed +
+                ', ' +
+                accentGreen +
+                ', ' +
+                accentBlue +
+                ')'
+            }"
+          >
+            Accent Button
+          </button>
+          <button
+            mat-icon-button
+            type="button"
+            class="real"
+            [ngStyle]="{
+              color:
+                'rgb(' +
+                accentRed +
+                ', ' +
+                accentGreen +
+                ', ' +
+                accentBlue +
+                ')'
+            }"
+          >
+            <mat-icon class="auto-flip">{{ "information" }}</mat-icon>
+          </button>
+        </div>
+        <div class="button-container">
+          <button
+            mat-raised-button
+            type="button"
+            class="real"
+            [ngStyle]="{
+              'background-color':
+                'rgb(' + warnRed + ', ' + warnGreen + ', ' + warnBlue + ')',
+              color:
+                warnRed > 128 || warnGreen > 128 || warnBlue > 128
+                  ? 'black'
+                  : 'white'
+            }"
+          >
+            Warn Raised Button
+          </button>
+
+          <button
+            mat-button
+            type="button"
+            class="real"
+            [ngStyle]="{
+              color: 'rgb(' + warnRed + ', ' + warnGreen + ', ' + warnBlue + ')'
+            }"
+          >
+            Warn Button
+          </button>
+          <button
+            mat-icon-button
+            type="button"
+            class="real"
+            [ngStyle]="{
+              color: 'rgb(' + warnRed + ', ' + warnGreen + ', ' + warnBlue + ')'
+            }"
+          >
+            <mat-icon class="auto-flip">{{ "information" }}</mat-icon>
+          </button>
+        </div>
+
+        <br />
+        <br />
+
+        <!-- <p>Filtered pixel, color applied through CSS <code>filter</code>:</p>
+        <img class="logo-icon filtered" [src]="logoPath" />
+        <div class="button-container">
+          <button mat-raised-button color="accent" type="button" class="">
+            Test Color Raised Button
+          </button>
+          <button mat-button color="accent" type="button" class="">
+            Test Color Button
+          </button>
+        </div>
+        <div class="button-container">
+          <button mat-raised-button type="button" class="">
+            Test Raised Button
+          </button>
+          <button mat-button type="button" class="">Test Button</button>
+        </div> -->
+      </div>
+    </body>
+    <body
+      class="dark-preview-body mat-typography midnight-cheese-dark dark-theme"
+    >
+      <div class="dark-preview">
+        <p>
+          Real pixel, color applied through CSS <code>background-color</code>:
+        </p>
+        <!-- <div class="pixel realPixel"></div> -->
+        <img
+          class="logo-icon-preview real"
+          [ngStyle]="{
+            'background-color':
+              'rgb(' +
+              primaryRed +
+              ', ' +
+              primaryGreen +
+              ', ' +
+              primaryBlue +
+              ')'
+          }"
+          [src]="lightLogoPath"
+        />
+        <mat-form-field>
+          <mat-label>Logo</mat-label>
+          <mat-select [(value)]="lightLogoPath">
+            <mat-option
+              [value]="option.lightPath"
+              *ngFor="let option of logoOptions"
+              >{{ option.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <div class="button-container">
+          <button
+            mat-raised-button
+            [ngStyle]="{
+              'background-color':
+                'rgb(' +
+                primaryRed +
+                ', ' +
+                primaryGreen +
+                ', ' +
+                primaryBlue +
+                ')',
+              color:
+                primaryRed > 128 || primaryGreen > 128 || primaryBlue > 128
+                  ? 'black'
+                  : 'white'
+            }"
+            type="button"
+            class="real"
+          >
+            Primary Raised Button
+          </button>
+          <button
+            mat-button
+            type="button"
+            class="real"
+            [ngStyle]="{
+              color:
+                'rgb(' +
+                primaryRed +
+                ', ' +
+                primaryGreen +
+                ', ' +
+                primaryBlue +
+                ')'
+            }"
+          >
+            Primary Button
+          </button>
+          <button
+            mat-icon-button
+            type="button"
+            class="real"
+            [ngStyle]="{
+              color:
+                'rgb(' +
+                primaryRed +
+                ', ' +
+                primaryGreen +
+                ', ' +
+                primaryBlue +
+                ')'
+            }"
+          >
+            <mat-icon class="auto-flip">{{ "information" }}</mat-icon>
+          </button>
+          <mat-checkbox
+            [ngStyle]="{
+              color:
+                'rgb(' +
+                primaryRed +
+                ', ' +
+                primaryGreen +
+                ', ' +
+                primaryBlue +
+                ')'
+            }"
+          ></mat-checkbox>
+        </div>
+        <div class="button-container">
+          <button
+            mat-raised-button
+            type="button"
+            class="real"
+            [ngStyle]="{
+              'background-color':
+                'rgb(' +
+                accentRed +
+                ', ' +
+                accentGreen +
+                ', ' +
+                accentBlue +
+                ')',
+              color:
+                accentRed > 128 || accentGreen > 128 || accentBlue > 128
+                  ? 'black'
+                  : 'white'
+            }"
+          >
+            Accent Raised Button
+          </button>
+
+          <button
+            mat-button
+            type="button"
+            class="real"
+            [ngStyle]="{
+              color:
+                'rgb(' +
+                accentRed +
+                ', ' +
+                accentGreen +
+                ', ' +
+                accentBlue +
+                ')'
+            }"
+          >
+            Accent Button
+          </button>
+          <button
+            mat-icon-button
+            type="button"
+            class="real"
+            [ngStyle]="{
+              color:
+                'rgb(' +
+                accentRed +
+                ', ' +
+                accentGreen +
+                ', ' +
+                accentBlue +
+                ')'
+            }"
+          >
+            <mat-icon class="auto-flip">{{ "information" }}</mat-icon>
+          </button>
+        </div>
+        <div class="button-container">
+          <button
+            mat-raised-button
+            type="button"
+            class="real"
+            [ngStyle]="{
+              'background-color':
+                'rgb(' + warnRed + ', ' + warnGreen + ', ' + warnBlue + ')',
+              color:
+                warnRed > 128 || warnGreen > 128 || warnBlue > 128
+                  ? 'black'
+                  : 'white'
+            }"
+          >
+            Warn Raised Button
+          </button>
+
+          <button
+            mat-button
+            type="button"
+            class="real"
+            [ngStyle]="{
+              color: 'rgb(' + warnRed + ', ' + warnGreen + ', ' + warnBlue + ')'
+            }"
+          >
+            Warn Button
+          </button>
+          <button
+            mat-icon-button
+            type="button"
+            class="real"
+            [ngStyle]="{
+              color: 'rgb(' + warnRed + ', ' + warnGreen + ', ' + warnBlue + ')'
+            }"
+          >
+            <mat-icon class="auto-flip">{{ "information" }}</mat-icon>
+          </button>
+        </div>
+
+        <br />
+        <br />
+
+        <!-- <p>Filtered pixel, color applied through CSS <code>filter</code>:</p>
+        <img class="logo-icon filtered" [src]="logoPath" />
+        <div class="button-container">
+          <button mat-raised-button color="accent" type="button" class="">
+            Test Color Raised Button
+          </button>
+          <button mat-button color="accent" type="button" class="">
+            Test Color Button
+          </button>
+        </div>
+        <div class="button-container">
+          <button mat-raised-button type="button" class="">
+            Test Raised Button
+          </button>
+          <button mat-button type="button" class="">Test Button</button>
+        </div> -->
+      </div>
+    </body>
+  </div>
+</div>

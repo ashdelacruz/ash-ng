@@ -1,0 +1,274 @@
+<div class="app-container mat-typography">
+  <div class="menu-container">
+    <!--Navbar menu-->
+    <mat-toolbar
+      class="app-toolbar fixed-top"
+      color="primary"
+      [ngStyle]="{ 'flex-direction': isSideNavOnLeft ? 'row' : 'row-reverse',
+			'padding-left': isUserOniPhone && isLandscape ? '5%' : '16px', 
+			'padding-right': isUserOniPhone && isLandscape ? '5%' : '16px', }"
+ 
+    >
+      <!--Menu nav-->
+      <button
+        class="hamburger hamburger--emphatic"
+        [ngClass]="menuButton.menuOpen ? 'is-active' : ''"
+        (click)="isHamburgerIconActive = !isHamburgerIconActive"
+        mat-icon-button
+        [matMenuTriggerFor]="navMenu"
+        #menuButton="matMenuTrigger"
+      >
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+      <span class="app-title" routerLink="/"
+        ><mat-label class="site-title" 
+          >AshDelaCruz.com</mat-label
+        ></span
+      >
+      <img class="logo-icon" [src]="logoPath" *ngIf="isLandscape" />
+      <span class="toolbar-item-spacer"></span>
+
+      <mat-menu #navMenu="matMenu">
+        <button mat-menu-item (click)="navigateToRoute('home')">Home</button>
+        <button mat-menu-item (click)="navigateToRoute('about')">About</button>
+        <button mat-menu-item (click)="navigateToRoute('cat')" *ngIf="userSessionService.isAuthenticated()">My Cat</button>
+        <!-- <button mat-menu-item (click)="navigateToRoute('theme')">
+			Theme
+		  </button> -->
+   
+        <!-- <button mat-menu-item (click)="navigateToRoute('streaming')">
+          Streaming
+        </button>
+        <button mat-menu-item (click)="navigateToRoute('testing')">
+          Testing
+        </button> -->
+        <button mat-menu-item [matMenuTriggerFor]="projectsMenu">
+          Projects
+        </button>
+        <button
+        mat-menu-item
+        (click)="navigateToRoute('user-mod')"
+      >
+        User Mod {{userModService.isDemoMode ? "(Demo)" : ""}}
+      </button>
+      <button mat-menu-item (click)="navigateToRoute('contact')">
+        Contact
+      </button>
+        <!-- <button mat-menu-item [matMenuTriggerFor]="otherMenu">Other</button> -->
+      </mat-menu>
+
+      <mat-menu #projectsMenu="matMenu" xPosition="before">
+        <button
+          mat-menu-item
+          (click)="navigateToRoute('projects/personal/raspberry-pi-canvas')"
+        >
+          Raspberry Pi Canvas
+        </button>
+      </mat-menu>
+
+      <mat-menu #otherMenu="matMenu">
+        <button mat-menu-item (click)="navigateToRoute('other/books')">
+          Books
+        </button>
+        <button mat-menu-item (click)="navigateToRoute('other/jokes')">
+          Jokes
+        </button>
+        <button mat-menu-item (click)="navigateToRoute('other/meme-generator')">
+          Meme Generator
+        </button>
+      </mat-menu>
+
+      <!--Change Theme-->
+      <button
+        mat-icon-button
+        color="accent"
+        id="theme-selector"
+        [mat-menu-trigger-for]="themeMenu"
+        [matTooltipDisabled]="isMobile"
+        matTooltip="Change Theme"
+      >
+        <mat-icon class="auto-flip">format_color_fill</mat-icon>
+      </button>
+      <mat-menu class="theme-menu" #themeMenu="matMenu">
+        <div class="current-theme-label">
+          <p>Active Theme</p>
+          <label>{{ activeThemeClass }}</label>
+        </div>
+
+        <mat-grid-list cols="2" class="theme-selectors-container">
+          <mat-grid-tile *ngFor="let theme of themeOptions">
+            <button
+              mat-button
+              [matTooltipDisabled]="isMobile"
+              [matTooltip]="theme.label"
+              class="theme-selector"
+              (click)="$event.stopPropagation(); setCurrentTheme(theme)"
+            >
+              <div
+                [attr.class]="theme.abbrev + '-primary theme-primary center'"
+              >
+                <div
+                  [attr.class]="theme.abbrev + '-accent  theme-accent'"
+                ></div>
+                <div [attr.class]="theme.abbrev + '-warn  theme-warn'"></div>
+                <mat-icon
+                  *ngIf="activeTheme === theme.name"
+                  class="center theme-check"
+                  >check</mat-icon
+                >
+              </div>
+            </button>
+          </mat-grid-tile>
+        </mat-grid-list>
+
+        <mat-radio-group class="dark-mode-options" [(ngModel)]="mode">
+          <div
+            class="dark-mode-radio-btn"
+            *ngFor="let darkModeOption of darkModeOptions"
+          >
+            <mat-radio-button
+              [value]="darkModeOption"
+              (click)="$event.stopPropagation()"
+              (change)="setMode(darkModeOption)"
+            >
+            </mat-radio-button>
+            <mat-label>{{ darkModeOption | titlecase }}</mat-label>
+          </div>
+        </mat-radio-group>
+      </mat-menu>
+
+      <!--Reposition Nav Menu-->
+      <div class="nav-options-container">
+        <button
+          mat-icon-button
+          color="accent"
+          [mat-menu-trigger-for]="repositionNavMenu"
+          [matTooltipDisabled]="isMobile"
+          matTooltip="Reposition Nav Menu"
+        >
+          <mat-icon>transform</mat-icon>
+        </button>
+        <mat-menu class="reposition-nav-menu" #repositionNavMenu="matMenu">
+          <div class="nav-position-label">
+            <p>Nav Position</p>
+            <label>{{ activeNavPosition }}</label>
+          </div>
+          <mat-grid-list cols="2" class="reposition-grid-container">
+            <mat-grid-tile>
+              <button
+                mat-icon-button
+                [matTooltipDisabled]="isMobile"
+                matTooltip="Top left"
+                (click)="setMenuPosition(1, 1)"
+              >
+                <mat-icon color="accent" style="transform: rotate(45deg)"
+                  >arrow_back</mat-icon
+                >
+              </button>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <button
+                mat-icon-button
+                [matTooltipDisabled]="isMobile"
+                matTooltip="Top right"
+                (click)="setMenuPosition(1, 0)"
+              >
+                <mat-icon color="accent" style="transform: rotate(135deg)"
+                  >arrow_back</mat-icon
+                >
+              </button>
+            </mat-grid-tile>
+          </mat-grid-list>
+
+        </mat-menu>
+      </div>
+
+      <!--Account menu icons-->
+      <div class="logged-in-menu">
+        <button
+          mat-icon-button
+          color="accent"
+          [mat-menu-trigger-for]="
+            userSessionService.isAuthenticated() ? loggedInMenu : loggedOutMenu
+          "
+          [matTooltipDisabled]="isMobile"
+          matTooltip="My Account"
+        >
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #loggedOutMenu [overlapTrigger]="false" yPosition="below">
+          <button mat-menu-item routerLink="user-auth/login">
+            <mat-icon>login</mat-icon>Log In
+          </button>
+          <button mat-menu-item routerLink="user-auth/signup">
+            <mat-icon>contact_mail</mat-icon>Sign Up
+          </button>
+          <mat-divider></mat-divider>
+          <div class="version-num">
+            <!-- <h4>{{userSessionService.getUser().roleString}}</h4> -->
+            <label>Version {{"1.0"}}</label>
+          </div>
+        </mat-menu>
+        <mat-menu #loggedInMenu [overlapTrigger]="false" yPosition="below">
+          <div class="current-user-label">
+            <h4>{{userSessionService.getUser().roleString}}</h4>
+            <label>{{ this.userSessionService.getUser().username}}</label>
+          </div>
+          <mat-divider></mat-divider>
+          <button mat-menu-item routerLink="/settings">
+            <mat-icon>settings</mat-icon><span>Settings</span>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>Log Out
+          </button>
+          <mat-divider></mat-divider>
+          <div class="version-num">
+            <!-- <h4>{{userSessionService.getUser().roleString}}</h4> -->
+            <label>Version {{"1.0"}}</label>
+          </div>
+        </mat-menu>
+      </div>
+    </mat-toolbar>
+  </div>
+
+  <div
+    [ngStyle]="{
+      'padding-left': isUserOniPhone && isLandscape ? '5%' : 'unset',
+      'padding-right': isUserOniPhone && isLandscape ? '5%' : 'unset'
+    }"
+    [attr.class]="activeThemeClass + ' app-content'"
+  >
+    <router-outlet class="router">
+      <app-spinner [spin]="spinnerStatus"></app-spinner>
+    </router-outlet>
+  </div>
+</div>
+
+<!-- Good use of form field dropdown 
+<mat-form-field appearance="fill">
+	<mat-label>Sidenav mode</mat-label>
+	<mat-select #mode value="side">
+	  <mat-option value="side">Side</mat-option>
+	  <mat-option value="over">Over</mat-option>
+	  <mat-option value="push">Push</mat-option>
+	</mat-select>
+  </mat-form-field> -->
+
+
+   <!-- <title>THIS IS A TEST OF TITLE</title>
+    <h1>THIS IS A TEST OF H1</h1>
+    <h2>THIS IS A TEST OF H2</h2>
+    <h3>THIS IS A TEST OF H3</h3>
+    <h4>THIS IS A TEST OF H4</h4>
+    <mat-label>THIS IS A TEST OF H5</mat-label>
+    <h6>THIS IS A TEST OF H6</h6>
+
+    <p>THIS IS A TEST OF p</p>
+    <strong>THIS IS A TEST OF STRONG</strong>
+    <a>THIS IS A TEST OF A</a>
+    <label>THIS IS A TEST OF LABEL</label>
+    <mat-label>THIS IS A TEST OF MAT-lABEL</mat-label>
+    <li>THIS IS A TEST OF LI</li> -->
+    

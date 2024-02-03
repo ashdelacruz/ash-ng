@@ -1,0 +1,117 @@
+<div class="settings-container">
+  <div class="settings-title">
+    <h1>Account Settings</h1>
+  </div>
+
+  <div class="settings-body">
+
+    <!-- <mat-divider></mat-divider> -->
+    <div class="user-info">
+      <h2>User Info</h2>
+      <div class="info-container">
+        <h4
+          >Role</h4
+        >
+        <mat-label>{{ roleLabel }}</mat-label>
+        <!-- <button mat-buton>
+                    Change
+                </button> -->
+      </div>
+      <div class="info-container">
+        <h4
+          >Username</h4
+        >
+        <mat-label>{{ usernameLabel }}</mat-label>
+        <button mat-raised-button (click)="updateUsername()">
+          Update Username
+        </button>
+      </div>
+      <div class="info-container">
+        <h4
+          >Email</h4
+        >
+        <mat-label>{{ emailLabel }}</mat-label>
+        <button mat-raised-button (click)="updateEmail()">Update Email</button>
+      </div>
+      <div class="info-container">
+        <h4
+          >Password</h4
+        >
+        <button mat-raised-button color="accent" (click)="updatePassword()">
+          Update Password
+        </button>
+      </div>
+      <div class="info-container">
+        <br />
+        <br />
+        <button mat-raised-button color="warn" (click)="deleteAccount()">
+          Detele Account
+        </button>
+      </div>
+    </div>
+    <!-- <mat-divider></mat-divider>
+    <div class="preferences">
+      <h2>Preferences</h2>
+      <div class="pref-container">
+        <h4>Two-Factor Authentication</h4>
+        <mat-slide-toggle #2faToggle [checked]="true">
+          <mat-label>On</mat-label>
+        </mat-slide-toggle>
+      </div>
+      <div class="pref-container">
+        <h4>Stay Logged In For 90 days</h4>
+        <mat-slide-toggle #2faToggle [checked]="true">
+          <mat-label>On</mat-label>
+        </mat-slide-toggle>
+      </div>
+      <div class="pref-container">
+        <h4>Dark Mode</h4>
+
+        <mat-radio-group class="dark-mode-options" [(ngModel)]="mode">
+          <div
+            class="dark-mode-radio-btn"
+            *ngFor="let darkModeOption of darkModeOptions"
+          >
+            <mat-radio-button
+              [value]="darkModeOption"
+              (click)="$event.stopPropagation()"
+              (change)="setMode(darkModeOption)"
+            >
+            </mat-radio-button>
+            <mat-label>{{ darkModeOption | titlecase }}</mat-label>
+          </div>
+        </mat-radio-group>
+      </div>
+      <div class="pref-container">
+        <div class="current-theme-label">
+          <h4>Theme</h4>
+          <label>{{ activeThemeClass }}</label>
+        </div>
+        <mat-grid-list cols="2" class="theme-selectors-container">
+          <mat-grid-tile *ngFor="let theme of themeOptions">
+            <button
+              mat-button
+              [matTooltip]="theme.label"
+              class="theme-selector"
+              (click)="$event.stopPropagation(); setCurrentTheme(theme)"
+            >
+              <div
+                [attr.class]="theme.name + ' theme-primary-background center'"
+              >
+                <div
+                  [attr.class]="theme.name + ' theme-accent-background'"
+                ></div>
+                <div [attr.class]="theme.name + ' theme-warn-background'"></div>
+                <mat-icon
+                  *ngIf="activeTheme === theme.name"
+                  class="center theme-check"
+                  >check</mat-icon
+                >
+              </div>
+            </button>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </div>
+  </div> -->
+</div>

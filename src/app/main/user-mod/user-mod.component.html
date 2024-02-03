@@ -1,0 +1,243 @@
+<div class="user-mod-container">
+  <div class="user-mod-title">
+    <h1>Moderate Users</h1>
+    <div *ngIf="userModService.isDemoMode">
+      <h4>(Demo Mode)</h4>
+    <p>These are not real users, so you can play around with the User Mod functionality </p></div>
+  </div>
+
+  <!--Filter bar-->
+  <div
+    class="filter-container"
+    [ngStyle]="{ display: isLandscape ? 'block' : 'none' }"
+  >
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input appDisallowSpaces/>
+    </mat-form-field>
+  </div>
+
+  <div class="select-action-container">
+    <!--Selected User Chips-->
+    <div class="selected-users">
+      <div class="selected-title">
+        <mat-label>Selected Users: {{ selectedUsers.selected.length }}</mat-label>
+        <p>(max. 10)</p>
+      </div>
+      <mat-chip-set>
+        <ng-container *ngFor="let selected of selectedUsers.selected">
+          <mat-chip-row (removed)="this.selectedUsers.deselect(selected)">
+            {{ selected.username }}
+
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+        </ng-container>
+      </mat-chip-set>
+    </div>
+
+    <!--User Mod Actions-->
+    <div class="action-container">
+      <button
+        color="accent"
+        [disabled]="selectedUsers.selected.length === 0"
+        (click)="onModifyBtnClick(selectedUsers.selected, false)"
+        mat-raised-button
+        *ngIf="!isLandscape"
+      >
+        Modify Selected Users
+      </button>
+
+      <!-- <mat-expansion-panel *ngIf="!isLandscape">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="user-table-title">
+              <mat-label>{{ sessionRole }} Actions</mat-label>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <app-user-mod-action [isSingleUser]="false" [isApprovingUser]="false">
+        </app-user-mod-action>
+      </mat-expansion-panel> -->
+      <ng-container *ngIf="isLandscape">
+        <div>
+          <mat-label>Actions</mat-label>
+        </div>
+        <app-user-mod-action [isSingleUser]="false" [isApprovingUser]="false">
+        </app-user-mod-action>
+      </ng-container>
+      <button
+      color="accent"
+      *ngIf="userModService.isDemoMode"
+      (click)="onResetDemoBtnClick()"
+      mat-raised-button
+      class="reset-demo-button"
+    >
+      Reset Demo Users
+    </button>
+    </div>
+  </div>
+
+  <!-- <div
+    class="user-table-container"
+    [ngStyle]="{
+      height: isLandscape ? '72dvh' : '70dvh'
+    }"
+  > -->
+  <div
+  class="user-table-container"
+  [ngStyle]="{
+    height: userModService.isDemoMode ? '63dvh' : (isLandscape ? '72dvh' : '70dvh')
+  }"
+>
+    <div class="user-table-title">
+      <mat-label>Users</mat-label>
+      <p>{{ "(Total: " + userTableRows.length + ")" }}</p>
+    </div>
+    <!--User Table-->
+    <div class="table-container mat-elevation-z8">
+      <table
+        mat-table
+        [dataSource]="userTableSource"
+        class="user-table"
+        matSort
+      >
+        <ng-container matColumnDef="select" sticky>
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox
+              (change)="$event ? toggleMaxRows() : null"
+              [checked]="selectedUsers.hasValue() && isMaxSelected()"
+              [indeterminate]="selectedUsers.hasValue() && !isMaxSelected()"
+              [aria-label]="checkboxLabel()"
+              matTooltip="Maximum Selected: 10"
+            >
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let user">
+            <mat-checkbox
+              (click)="$event.stopPropagation()"
+              (change)="toggleRow($event, user)"
+              [checked]="selectedUsers.isSelected(user)"
+              [aria-label]="checkboxLabel(user)"
+            >
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="username" sticky>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Username</th>
+          <td class="uname-col" mat-cell *matCellDef="let userRow">
+            {{ userRow.username }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+          <td mat-cell *matCellDef="let userRow">{{ userRow.email }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+          <td class="user-status-cell" mat-cell *matCellDef="let userRow">
+            <mat-slide-toggle
+              #statusToggle
+              *ngIf="userRow.lastLogin != null && userRow.accountNonLocked"
+              [checked]="userRow.enabled"
+              (change)="onStatusToggle($event, userRow)"
+            >
+            </mat-slide-toggle>
+            {{ parseStatus(userRow) }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Role</th>
+
+          <td mat-cell *matCellDef="let userRow">
+            {{ userRow.roleString }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let userRow">
+            <div *ngIf="!userRow.enabled && userRow.authorities.length === 0" class="action-pending">
+              <button
+                mat-raised-button
+                color="accent"
+                id="approve-button"
+                (click)="onTableApproveBtnClick(userRow)"
+                
+              [disabled]="!isAdminSession"
+              >
+                Approve
+              </button>
+              <button
+                mat-raised-button
+                color="warn"
+                (click)="onTableDenyBtnClick(userRow)"
+
+              [disabled]="!isAdminSession"
+              >
+                Deny
+              </button>
+            </div>
+            <div *ngIf="userRow.authorities.length > 0 && userRow.lastLogin !== null && userRow.accountNonLocked" class="action-user">
+              <button
+                mat-raised-button
+                color="primary"
+                class="action-button"
+                (click)="onModifyBtnClick([userRow], true)"
+              >
+                Modify
+              </button>
+            </div>
+            <div *ngIf="userRow.enabled && userRow.lastLogin === null && userRow.accountNonLocked" class="action-user">
+              <button
+                mat-raised-button
+                color="primary"
+                class="resend-button"
+                (click)="onResendBtnClick(userRow)"
+              >
+                Resend Activation
+              </button>
+            </div>
+            <div *ngIf="!userRow.accountNonLocked" class="action-user">
+              <button
+                mat-raised-button
+                color="primary"
+                class="resend-button"
+                (click)="onUnlockBtnClick(userRow)"
+              >
+                Unlock
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="userTableHeaders; sticky: true"
+        ></tr>
+        <tr mat-row *matRowDef="let user; columns: userTableHeaders"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">
+            <mat-label class="no-data-message">
+            {{ input.value === "" ? "No users" : ("No users matching the filter " + input.value)}}
+            </mat-label>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <mat-paginator
+      *ngIf="isLandscape"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page of users"
+      class="mat-paginator-sticky mat-elevation-z8"
+    ></mat-paginator>
+  </div>
+</div>

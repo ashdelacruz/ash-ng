@@ -1,0 +1,843 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+@import "/src/styles/variables";
+// @import "/src/styles/themes";
+@import "@coreui/coreui/scss/coreui";
+@import "/node_modules/hamburgers/dist/hamburgers.css";
+@import '~@angular/cdk/overlay-prebuilt.css';
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+// The warn palette is optional (defaults to red).
+// $AshDelaCruz-warn: mat.define-palette(mat.$red-palette);
+
+// $black-and-gold-primary: mat.define-palette($goldenrod);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+/* You can add global styles to this file, and also import other style files */
+
+// $my-primary: mat.define-palette(mat.$indigo-palette, 500);
+// $my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// $my-theme: mat.define-light-theme((
+//  color: (
+//    primary: $my-primary,
+//    accent: $my-accent,
+//  ),
+//  density: 0,
+// ));
+
+
+@mixin define-css-classes($theme) {
+  @include angular-material-theme($theme);
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  // CSS THEME-DEPENDENT-STYLES ARE HERE:
+  .theme-dependent-colors {
+    background: mat-color($primary);
+    color: mat-color($accent);
+  }
+}
+
+//Midnight Cheese (mc)
+$mc-primary-palette: mat.define-palette(mat.$amber-palette, 500);
+$mc-accent-palette: mat.define-palette(mat.$gray-palette, 900);
+
+$mc-dark-primary-palette: mat.define-palette(mat.$gray-palette, 900);
+$mc-dark-accent-palette: mat.define-palette(mat.$amber-palette, 600);
+$mc-warn-palette: mat.define-palette(mat.$red-palette);
+
+$MidnightCheese-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $mc-primary-palette,
+      accent: $mc-accent-palette,
+      warn: $mc-warn-palette,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+$MidnightCheese-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $mc-dark-primary-palette,
+      accent: $mc-dark-accent-palette,
+      warn: $mc-warn-palette,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+//Incredible Hulk (ih)
+$ih-primary-palette: mat.define-palette(mat.$green-palette, 500);
+$ih-accent-palette: mat.define-palette(mat.$deep-purple-palette, 700);
+$ih-warn-palette: mat.define-palette(mat.$red-palette, 800);
+
+$ih-dark-primary-palette: mat.define-palette(mat.$deep-purple-palette, 600);
+$ih-dark-accent-palette: mat.define-palette(mat.$green-palette, 400);
+$ih-dark-warn-palette: mat.define-palette(mat.$red-palette, 900);
+
+$IncredibleHulk-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $ih-primary-palette,
+      accent: $ih-accent-palette,
+      warn: $ih-warn-palette,
+    ),
+    typography:
+      mat.define-typography-config(
+        $font-family: "Times",
+    
+        $headline-5:
+          mat.define-typography-level(28pt),
+        $headline-6:
+        mat.define-typography-level(24pt),
+        $subtitle-1:
+        mat.define-typography-level(20pt),
+        $body-1:
+        mat.define-typography-level(18pt),
+         ),
+    density: 0,
+  )
+);
+$IncredibleHulk-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $ih-dark-primary-palette,
+      accent: $ih-dark-accent-palette,
+      warn: $ih-dark-warn-palette,
+    ),
+    typography:
+      mat.define-typography-config(
+        $font-family: "Times",
+
+        $headline-5:
+          mat.define-typography-level(28pt),
+        $headline-6:
+        mat.define-typography-level(24pt),
+        $subtitle-1:
+        mat.define-typography-level(20pt),
+        $body-1:
+        mat.define-typography-level(18pt),
+      ),
+    density: 0,
+  )
+);
+
+//Giving Thanks
+$gt-primary-palette: mat.define-palette(mat.$orange-palette, 700);
+$gt-accent-palette: mat.define-palette(mat.$brown-palette, A700);
+$gt-warn-palette: mat.define-palette(mat.$red-palette, A700);
+
+$gt-dark-primary-palette: mat.define-palette(mat.$brown-palette, 900);
+$gt-dark-accent-palette: mat.define-palette(mat.$orange-palette, A700);
+$gt-dark-warn-palette: mat.define-palette(mat.$red-palette, A700);
+
+$GivingThanks-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $gt-primary-palette,
+      accent: $gt-accent-palette,
+      warn: $gt-warn-palette,
+    ),
+    typography:
+      mat.define-typography-config(
+        $font-family: "'Comic Sans MS', 'Comic Sans'",
+
+ 
+        $headline-5:
+          mat.define-typography-level(25pt),
+        $headline-6:
+        mat.define-typography-level(20pt),
+        $subtitle-1:
+        mat.define-typography-level(18pt),
+        $body-1:
+        mat.define-typography-level(16pt),
+      ),
+    density: 0,
+  )
+);
+$GivingThanks-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $gt-dark-primary-palette,
+      accent: $gt-dark-accent-palette,
+      warn: $gt-dark-warn-palette,
+    ),
+    typography:
+      mat.define-typography-config(
+        $font-family: "'Comic Sans MS', 'Comic Sans'",
+
+        $headline-5:
+          mat.define-typography-level(25pt),
+        $headline-6:
+        mat.define-typography-level(20pt),
+        $subtitle-1:
+        mat.define-typography-level(18pt),
+        $body-1:
+        mat.define-typography-level(16pt),
+      ),
+    density: 0,
+  )
+);
+
+//Baby Blue (bb)
+$bb-primary-palette: mat.define-palette(mat.$light-blue-palette, A100);
+$bb-accent-palette: mat.define-palette(mat.$blue-gray-palette, 600);
+$bb-warn-palette: mat.define-palette(mat.$pink-palette, 500);
+
+$bb-dark-primary-palette: mat.define-palette(mat.$blue-grey-palette, 600);
+$bb-dark-accent-palette: mat.define-palette(mat.$light-blue-palette, A100);
+$bb-dark-warn-palette: mat.define-palette(mat.$pink-palette, 500);
+
+$BabyBlue-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $bb-primary-palette,
+      accent: $bb-accent-palette,
+      warn: $bb-warn-palette,
+    ),
+    typography:
+      mat.define-typography-config(
+        $font-family: "courier, monospace",
+   
+        $headline-5:
+          mat.define-typography-level(28pt),
+        $headline-6:
+        mat.define-typography-level(19pt),
+        $subtitle-1:
+        mat.define-typography-level(17pt),
+        $body-1:
+        mat.define-typography-level(16pt)
+        ),
+    density: 0,
+  )
+);
+$BabyBlue-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $bb-dark-primary-palette,
+      accent: $bb-dark-accent-palette,
+      warn: $bb-dark-warn-palette,
+    ),
+    typography:
+      mat.define-typography-config(
+        $font-family: "courier, monospace",
+
+        $headline-5:
+          mat.define-typography-level(28pt),
+        $headline-6:
+        mat.define-typography-level(19pt),
+        $subtitle-1:
+        mat.define-typography-level(17pt),
+        $body-1:
+        mat.define-typography-level(16pt),
+      ),
+    density: 0,
+  )
+);
+
+$app-themes: (
+  incredible-hulk: $IncredibleHulk-theme,
+  midnight-cheese: $MidnightCheese-theme,
+  giving-thanks: $GivingThanks-theme,
+  baby-blue: $BabyBlue-theme,
+
+  incredible-hulk-dark: $IncredibleHulk-dark-theme,
+  midnight-cheese-dark: $MidnightCheese-dark-theme,
+  giving-thanks-dark: $GivingThanks-dark-theme,
+  baby-blue-dark: $BabyBlue-dark-theme,
+);
+
+
+// Emit theme-dependent styles for common features used across multiple components.
+@include mat.core-theme($mc-primary-palette);
+
+// Emit styles for MatButton based on `$my-theme`. Because the configuration
+// passed to `define-light-theme` omits typography, `button-theme` will not
+// emit any typography styles.
+@include mat.button-theme($mc-primary-palette);
+
+
+
+// Include the theme mixins for other components you use here.
+
+html,
+body {
+  height: 100dvh;
+  width: 100dvw;
+}
+
+// .logo-icon {
+//   filter: invert(89%) sepia(20%) saturate(7430%) hue-rotate(351deg) brightness(103%) contrast(104%);
+// }
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #fafafa;
+  color-scheme: light;
+
+  .app-content {
+    background-color: #ffffff;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $mc-black;
+  }
+}
+
+body.dark-theme {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  // background-color: #303030;
+  color-scheme: dark;
+
+  .app-content {
+    background-color: #454545;
+  }
+
+  // .logo-icon {
+  //   filter: invert(62%) sepia(66%) saturate(298%) hue-rotate(73deg) brightness(92%) contrast(93%);
+  // }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $mc-white;
+  }
+}
+
+
+.markdown-component {
+}
+
+:root {
+}
+
+
+.midnight-cheese {
+  @include mat.all-component-themes($MidnightCheese-theme);
+  
+
+  background-color: $mc-gold;
+
+  mat-list.books-list {
+    background-color: $mc-white;
+  }
+
+  a {
+    color: $mc-black;
+    text-shadow: $mc-gold 1px 0 10px;
+  }
+  mat-label,
+  label {
+    color: $mc-black;
+  }
+
+  .form-error {
+    font-size: 14px;
+    color: $mc-red;
+  }
+
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner::before,
+  .hamburger.is-active .hamburger-inner::after {
+    background-color: $mc-black;
+  }
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    width: 25px;
+    height: 1px;
+    background-color: $mc-black;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+  }
+
+  mat-icon.streaming-icon {
+    color: $mc-gold;
+  }
+}
+
+.midnight-cheese-dark {
+  @include mat.all-component-themes($MidnightCheese-dark-theme);
+
+  color-scheme: dark;
+  background-color: $mc-black;
+
+  #dialog-title,
+  mat-dialog-actions {
+    background: $mc-black3;
+  }
+  mat-label,
+  label,
+  a {
+    color: $mc-gold;
+  }
+
+  .form-error {
+    font-size: 14px;
+    color: $mc-red;
+  }
+
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner::before,
+  .hamburger.is-active .hamburger-inner::after {
+    background-color: $mc-gold;
+  }
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    width: 25px;
+    height: 1px;
+    background-color: $mc-gold;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+  }
+}
+
+// @media (prefers-color-scheme: dark) {
+
+// }
+
+.incredible-hulk {
+  @include mat.all-component-themes($IncredibleHulk-theme);
+  @include mat.all-component-typographies($IncredibleHulk-theme);
+
+
+
+  background-color: $ih-green; 
+
+  mat-list.books-list {
+    background-color: $mc-white;
+  }
+
+  a {
+    color: $ih-purple;
+    font-weight: bold;
+    font-size: 17px;
+    text-shadow: $ih-green 1px 0 10px;
+  }
+
+  mat-label,
+  label {
+    color: $ih-purple;
+    font-weight: bold;
+    font-size: 17px;
+  }
+
+  .form-error {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    margin-top: -10px;
+    letter-spacing: 0.02em;
+    color: $ih-red;
+  }
+
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner::before,
+  .hamburger.is-active .hamburger-inner::after {
+    background-color: $ih-purple;
+  }
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    width: 25px;
+    height: 1px;
+    background-color: $ih-purple;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+  }
+}
+
+.incredible-hulk-dark {
+  @include mat.all-component-themes($IncredibleHulk-dark-theme);
+  @include mat.all-component-typographies($IncredibleHulk-dark-theme);
+
+  color-scheme: dark;
+  background-color: $ih-purple2; 
+
+  mat-label,
+  label,
+  a {
+    color: $ih-green;
+    font-weight: bold;
+    font-size: 17px;
+  }
+
+  .form-error {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    margin-top: -10px;
+    letter-spacing: 0.02em;
+    color: $ih-red;
+  }
+
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner::before,
+  .hamburger.is-active .hamburger-inner::after {
+    background-color: $ih-green;
+  }
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    width: 25px;
+    height: 1px;
+    background-color: $ih-green;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+  }
+}
+
+.giving-thanks {
+  @include mat.all-component-themes($GivingThanks-theme);
+  @include mat.all-component-typographies($GivingThanks-theme);
+
+  background-color: $gt-orange; 
+  mat-list.books-list {
+    background-color: $mc-white;
+  }
+
+  p,
+  h1,
+  h3 {
+    // color: $mc-black;
+  }
+
+  a {
+    color: $gt-brown;
+    font-weight: bold;
+    font-size: 17px;
+    text-shadow: $gt-orange 1px 0 10px;
+  }
+
+  mat-label,
+  label {
+    color: $gt-brown;
+    font-weight: bold;
+    font-size: 17px;
+  }
+
+
+  // label {
+  //   color: $mc-black;
+  //   font-weight: bold;
+  // }
+
+  .form-error {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    margin-top: -10px;
+    letter-spacing: 0.02em;
+    color: $nj-orange;
+  }
+
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner::before,
+  .hamburger.is-active .hamburger-inner::after {
+    background-color: $gt-brown;
+  }
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    width: 25px;
+    height: 1px;
+    background-color: $gt-brown;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+  }
+}
+
+.giving-thanks-dark {
+  @include mat.all-component-themes($GivingThanks-dark-theme);
+  @include mat.all-component-typographies($GivingThanks-dark-theme);
+
+  background-color: $gt-brown2; 
+  color-scheme: dark;
+
+  // mat-toolbar {
+  //   mat-label {
+  //     color: $gt-orange;
+  //   }
+  // }
+  button {
+    color: $gt-orange;
+  }
+
+  p,
+  h1,
+  h3 {
+    color: $mc-white;
+  }
+  
+  mat-label,
+  label,
+  a {
+    color: $gt-orange;
+    font-weight: bold;
+    font-size: 17px;
+  }
+
+  .form-error {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    margin-top: -10px;
+    letter-spacing: 0.02em;
+    color: $nj-orange;
+  }
+
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner::before,
+  .hamburger.is-active .hamburger-inner::after {
+    background-color: $gt-orange;
+  }
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    width: 25px;
+    height: 1px;
+    background-color: $gt-orange;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+  }
+}
+
+.baby-blue {
+  @include mat.all-component-themes($BabyBlue-theme);
+  @include mat.all-component-typographies($BabyBlue-theme);
+  background-color: $bb-light-blue; 
+  mat-list.books-list {
+    background-color: $mc-white;
+  }
+
+  a {
+    color: $bb-gray;
+    font-weight: bold;
+    font-size: 17px;
+    text-shadow: $bb-light-blue 1px 0 10px;
+  }
+
+  mat-label,
+  label{
+    color: $bb-gray;
+    font-weight: bold;
+    font-size: 17px;
+  }
+
+
+  .form-error {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    margin-top: -10px;
+    letter-spacing: 0.02em;
+    color: $mc-red;
+  }
+
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner::before,
+  .hamburger.is-active .hamburger-inner::after {
+    background-color: $bb-indigo2;
+  }
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    width: 25px;
+    height: 1px;
+    background-color: $bb-indigo2;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+  }
+}
+
+.baby-blue-dark {
+  @include mat.all-component-themes($BabyBlue-dark-theme);
+  @include mat.all-component-typographies($BabyBlue-dark-theme);
+  // @include mat.button-theme($MidnightCheese-theme);
+  // @include mat.mat-sidenav-content($MidnightCheese-dark-theme);
+  background-color: $bb-gray; 
+  color-scheme: dark;
+
+  mat-label,
+  label,
+  a {
+    color: $bb-light-blue;
+    font-weight: bold;
+    font-size: 17px;
+  }
+
+
+  .form-error {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    margin-top: -10px;
+    letter-spacing: 0.02em;
+    color: $mc-red;
+  }
+
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner::before,
+  .hamburger.is-active .hamburger-inner::after {
+    background-color: $bb-light-blue;
+  }
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    width: 25px;
+    height: 1px;
+    background-color: $bb-light-blue;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+  }
+}
+
+.mat-mdc-snack-bar-container {
+  &.info-snackbar {
+    --mdc-snackbar-container-color: $ih-green2;
+    --mat-mdc-snack-bar-button-color: $mc-white;
+    --mdc-snackbar-supporting-text-color: $mc-white2;
+    background-color: $ih-green2;
+  }
+
+  &.warn-snackbar {
+    --mdc-snackbar-container-color: $bb-yellow2;
+    --mat-mdc-snack-bar-button-color: $mc-black;
+    --mdc-snackbar-supporting-text-color: $mc-black2;
+    background-color: $bb-yellow2;
+  }
+
+  &.error-snackbar {
+    --mdc-snackbar-container-color: $mc-red;
+    --mat-mdc-snack-bar-button-color: $mc-white;
+    --mdc-snackbar-supporting-text-color: $mc-white2;
+    background-color: $mc-red;
+    color: $mc-white;
+  }
+}
+
+.hamburger-box {
+  width: 40px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+
+  // right: 0.5rem;
+  right: 0.04rem;
+  bottom: 0.04rem;
+}
+
+.hamburger-inner {
+  display: block;
+  // top: 50%;
+  margin-top: -2px;
+}
+
+// .dark-mode {
+//   @include mat.all-component-themes($MidnightCheese-dark-theme);
+//   // @include mat.button-theme($MidnightCheese-theme);
+//   // @include mat.mat-sidenav-content($MidnightCheese-dark-theme);
+//   mat-toolbar {
+//     mat-label, mat-icon {
+//       color: $mc-gold;
+//     }
+//   }
+
+//   mat-sidenav {
+//     mat-label, mat-icon {
+//       color: $mc-gold;
+//     }
+//   }
+// }
+
+// mat-toolbar {
+//   mat-label, mat-icon {
+//     color: $mc-black;
+//   }
+// }
+
+// mat-sidenav {
+//   mat-label, mat-icon {
+//     color: $mc-black;
+//   }
+// }
+
+// .mc-dark-background {
+//   background-color: $mc-black3;
+// }
+
+// .midnight-cheese-background {
+//   background-color: $mc-gold;
+// }

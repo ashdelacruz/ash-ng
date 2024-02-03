@@ -1,0 +1,92 @@
+<div class="contact-container">
+  <div class="contact-header">
+    <img class="logo-icon" [src]="logoPath" />
+
+    <h1>CONTACT</h1>
+  </div>
+  <div class="contact-body">
+    <form
+      class="contact-form"
+      name="contactForm"
+      [formGroup]="contactForm"
+      (submit)="onSubmit()"
+    >
+      <div class="input-wrapper">
+        <div class="contact-name-email-container">
+          <mat-form-field class="contact-name">
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              required
+              formControlName="name"
+              id="name"
+              type="text"
+              maxlength="50"
+            />
+            <mat-error
+              *ngIf="f.name.touched && f.name.invalid"
+              class="form-error"
+            >
+              {{ unameFieldErrorText(f.name) }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="contact-email">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              required
+              formControlName="email"
+              id="email"
+              type="email"
+              autocomplete="email"
+              maxlength="254"
+              (input)="removeSpacesInput($event)"
+              appDisallowSpaces
+            />
+            <mat-error
+              *ngIf="f.email.touched && f.email.invalid"
+              class="form-error"
+            >
+              {{ emailFieldErrorText(f.email) }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- <mat-divider></mat-divider> -->
+
+        <mat-form-field class="contact-message">
+          <mat-label>Message</mat-label>
+          <textarea
+            matInput
+            required
+            formControlName="message"
+            id="message"
+            type="text"
+          ></textarea>
+
+          <mat-error
+            *ngIf="f.message.touched && f.message.invalid"
+            class="form-error"
+          >
+            {{ "Message is required" }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="button-container">
+        <button mat-raised-button color="warn" type="button" routerLink="/">
+          Cancel
+        </button>
+        <button
+          mat-raised-button
+          color="accent"
+          type="submit"
+          [disabled]="!contactForm.valid"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

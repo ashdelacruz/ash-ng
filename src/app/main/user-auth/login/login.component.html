@@ -1,0 +1,123 @@
+<div class="login-container">
+  <div class="login-header">
+    <img
+      class="logo-icon"
+      [src]="logoPath
+      "
+    />
+    <h1 *ngIf="!isSessionExpiredLogin">LOGIN</h1>
+    <h1 *ngIf="isSessionExpiredLogin">SESSION EXPIRED</h1>
+    <h3 *ngIf="isSessionExpiredLogin">Please login</h3>
+  </div>
+
+  <mat-divider></mat-divider>
+  <div class="login-body">
+    <form
+      class="login-form"
+      name="loginForm"
+      [formGroup]="loginForm"
+      (submit)="onSubmit()"
+    >
+      <div class="input-wrapper">
+        <!--Username field-->
+        <mat-form-field input class="uname-field" appearance="fill">
+          <mat-label for="username">Username</mat-label>
+          <input
+            matInput
+            required
+            formControlName="username"
+            id="username"
+            type="text"
+            autocomplete="username"
+            maxlength="50"
+            (input)="removeSpacesInput($event)"
+            appDisallowSpaces
+          />
+          <!-- <mat-hint align="end">{{ f.username.value?.length }}/10</mat-hint> -->
+          <mat-error
+            *ngIf="f.username.dirty && f.username.invalid"
+            class="form-error"
+          >
+            {{ unameFieldErrorText(f.username) }}
+          </mat-error>
+        </mat-form-field>
+
+        <!--Password field-->
+        <div class="pass-container">
+          <mat-form-field input class="pass-field" appearance="fill">
+            <mat-label for="password">Password</mat-label>
+            <input
+              matInput
+              required
+              formControlName="password"
+              id="password"
+              [type]="isHidePassword ? 'password' : 'text'"
+              autocomplete="password"
+              maxlength="50"
+              appDisallowSpaces
+            />
+            <!-- <password-strength-meter [password]="passwordModel" 
+            [enableFeedback]="true"/> -->
+            <mat-error
+              *ngIf="f.password.dirty && f.password.invalid"
+              class="form-error"
+            >
+              {{ passFieldErrorText(f.password) }}
+            </mat-error>
+          </mat-form-field>
+          <!--Show/Hide password-->
+          <button
+            mat-icon-button
+            [matTooltip]="(isHidePassword ? 'Show' : 'Hide') + ' Password'"
+            color="accent"
+            type="button"
+            (click)="
+              this.isHidePassword = this.isHidePassword ? false : true;
+              $event.preventDefault();
+            "
+          >
+            <mat-icon class="auto-flip">{{
+              isHidePassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="button-container" *ngIf="!isSessionExpiredLogin">
+        <button mat-raised-button color="warn" type="button" routerLink="/">
+          Cancel
+        </button>
+        <button mat-raised-button color="accent" type="submit">Enter</button>
+      </div>
+    </form>
+
+    <!--Show/Hide password-->
+    <!-- <button
+      mat-icon-button
+      [matTooltip]="(isHidePassword ? 'Show' : 'Hide') + ' Password'"
+      color="accent"
+      (keydown)="$event.stopImmediatePropagation()"
+      (click)="this.isHidePassword = this.isHidePassword ? false : true"
+    >
+      <mat-icon class="auto-flip">{{
+        isHidePassword ? "visibility_off" : "visibility"
+      }}</mat-icon>
+    </button> -->
+
+    <div class="login-footer" *ngIf="!isSessionExpiredLogin" >
+      <button mat-button class="login-button" routerLink="/user-auth/forgot">
+        Forgot Username or Password
+      </button>
+      <div class="signup-container">
+        <p>Don't have an account?</p>
+        <button
+          mat-raised-button
+          class="login-button"
+          routerLink="/user-auth/signup"
+        >
+          Sign Up
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

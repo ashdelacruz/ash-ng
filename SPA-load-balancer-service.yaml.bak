@@ -1,0 +1,27 @@
+#Not yet used, to be implemented with K8S
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    # service-label-key: service-label-value 
+    load-balancer-key: load-balancer-value
+  name: service-name-loadbalancer
+spec:
+  type: LoadBalancer
+  ports:
+  - name: service-port-name
+    port: 8080
+    protocol: TCP
+  selector:
+    personal-site-key : personal-site-value 
+ 
+#for access the angular application outside kubernetes
+# $ kubectl apply -f SPA-load-balancer-service.yaml
+# > service/service-name-loadbalancer created
+
+# $ kubectl get svc -owide
+# > NAME                        TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE     SELECTOR
+# > kubernetes                  ClusterIP      10.96.0.1       <none>        443/TCP        4h50m   <none>
+# > service-name                ClusterIP      10.99.48.71     <none>        80/TCP         60s     personal-site-key=personal-site-value
+# > service-name-loadbalancer   LoadBalancer   10.108.238.55   <pending>     80:32194/TCP   11s     personal-site-key=personal-site-value

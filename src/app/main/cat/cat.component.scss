@@ -1,0 +1,39 @@
+.cat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .cat-header {
+    align-self: center;
+    text-align: center;
+
+  padding: 10px;
+    .logo-icon {
+      background: none;
+      padding: 0;
+      border: 0;
+      cursor: pointer;
+      width: 160px;
+      // filter: invert(89%) sepia(20%) saturate(7430%) hue-rotate(351deg) brightness(103%) contrast(104%);
+    }
+  }
+
+  .cat-body {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    
+    
+
+    gallery {
+      font-size: 16px;
+      max-width: 100dvw;
+      width: 600px;
+      height: auto;
+    }
+
+
+  }
+}

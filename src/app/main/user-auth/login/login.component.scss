@@ -1,0 +1,116 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100%;
+  margin-top: 15px;
+  margin-bottom: 100px;
+  // width: 100dvw;
+
+  .login-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // margin-top: 30px;
+    .logo-icon {
+      background: none;
+      padding: 0;
+      border: 0;
+      cursor: pointer;
+      width: 140px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .login-body {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    .login-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+
+      .input-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+
+        gap: 5px;
+
+        mat-form-field {
+          width: 100%;
+        }
+
+        .form-error {
+          text-align: left;
+        }
+
+        label {
+          margin-right: 10px;
+        }
+
+        .input-container {
+          display: flex;
+          align-items: baseline;
+          width: 100%;
+          gap: 5px;
+        }
+
+        .pass-container {
+          display: flex;
+          align-items: baseline;
+          width: 100%;
+          gap: 5px;
+        }
+
+        .stay-logged-in {
+          bottom: 15px;
+        }
+      }
+
+      #approve-email-text {
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+        width: 300px;
+      }
+
+      .button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: auto;
+        width: 100%;
+        margin-bottom: 30px;
+        margin-top: 30px;
+
+      }
+    }
+
+    .login-footer {
+      .forgot-button-container {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-top: 30px;
+
+        button {
+          height: max-content;
+        }
+      }
+
+      .signup-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+      }
+    }
+  }
+}

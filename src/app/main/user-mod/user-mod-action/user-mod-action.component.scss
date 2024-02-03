@@ -1,0 +1,120 @@
+.umod-action-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px; // Adjust as needed
+
+  #pending-actions,
+  #status-actions,
+  #role-actions,
+  #info-actions {
+    display: flex;
+    flex-wrap: wrap; // Allow items to wrap to the next line
+    gap: 16px; // Adjust as needed
+    align-items: center;
+    justify-content: space-around;
+
+    button {
+      // flex: 1 1 calc(50% - 8px); // Adjust as needed for a 2x2 grid
+      flex: 1 0 auto; // Adjust as needed for a 2x2 grid
+    }
+  }
+  #resend-activation-action {
+
+    // width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap; // Allow items to wrap to the next line
+    gap: 16px; // Adjust as needed
+    justify-content: center;
+
+ 
+
+    #resend-text {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      // align-items: center;
+      // gap: 10px;
+      // width: 80%;
+    }
+
+    button {
+      height: auto;
+      width: auto;
+    }
+
+  }
+
+  #contact-action,
+  #delete-action {
+    display: flex;
+    flex-wrap: wrap; // Allow items to wrap to the next line
+    gap: 16px; // Adjust as needed
+    justify-content: center;
+
+    button {
+      flex: 1 1 calc(50% - 8px); // Adjust as needed for a 2x2 grid
+    }
+
+    #contact-email {
+      display: flex;
+      flex-direction: row;
+      // align-items: center;
+      gap: 10px;
+    }
+  }
+
+  #uname-actions,
+  #email-actions {
+    flex: 1 1 calc(50% - 8px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px; // Adjust as needed
+
+    #current-uname,
+    #current-email {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    #new-uname,
+    #new-email {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    label {
+      margin-bottom: 4px; // Adjust as needed
+    }
+
+    input {
+      width: 100%; // Adjust as needed
+    }
+
+    button {
+      flex: 1 1 content; // Adjust as needed for a 2x2 grid
+    }
+  }
+
+  #info-actions {
+    width: 100%;
+    flex-direction: row; // Adjust as needed
+    display: flex;
+    flex-wrap: wrap; // Allow items to wrap to the next line
+  }
+
+  mat-divider {
+    width: 100%;
+  }
+
+  // Media query for smaller screens
+  @media (max-width: 600px) {
+    // #role-actions button {
+    //   flex: 1 1 calc(25% - 8px); // Adjust as needed for a 1x4 grid
+    // }
+  }
+}

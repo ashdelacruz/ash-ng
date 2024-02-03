@@ -1,0 +1,9 @@
+<div class="streaming-container">
+
+    <vg-player>
+        <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls>
+            <source src="http://localhost:80/api/stream/sample" type="video/mp4">
+        </video>
+    </vg-player>
+</div>
+ 

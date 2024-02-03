@@ -1,0 +1,27 @@
+<div class="streaming-container">
+    <div class="streaming-toolbar">
+        <mat-divider></mat-divider>
+        <mat-toolbar>
+            <span><button mat-button routerLink="streaming">Streaming</button></span>
+        </mat-toolbar>
+    </div>
+
+    <div class="streaming-options">
+        <button class="button-container mat-elevation-z4" matRipple (click)="navigateToRoute('streaming/movies')">
+
+            <div class="label-container">
+
+                <h1 class="movie-label">Movies</h1>
+                <mat-icon class="mat-accent">theaters</mat-icon>
+            </div>
+
+        </button>
+        <button class="button-container mat-elevation-z4" matRipple (click)="navigateToRoute('streaming/tv')">
+            <div class="label-container">
+                <h1>TV</h1>
+                <mat-icon class="mat-accent">tv</mat-icon>
+            </div>
+        </button>
+    </div>
+
+</div>

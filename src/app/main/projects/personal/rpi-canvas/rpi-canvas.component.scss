@@ -1,0 +1,109 @@
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
+
+.rpi-canvas-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    // overflow: hidden scroll;
+
+    .rpi-canvas-header {
+        margin: 30px;
+        .info-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 2%;
+            flex-direction: row;
+
+            .pi-media {
+                margin: 1%;
+            }
+
+            .pi-video {
+                width: 40%;
+                margin: 1%;
+            }
+            
+            .pi-text {
+                width: 40%;
+                margin: 1%;
+            }
+            
+        }
+
+        .conclusion-container {
+            margin: 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+
+            .download-button {
+                margin-top: 5%;
+                // height: 30px;
+            }
+
+        }
+    }
+
+    .rpi-canvas-body {
+        margin: 30px;
+
+        // .download-button {
+        //     margin-bottom: 30px;
+        // }
+    }
+}
+
+.portrait {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    overflow: hidden scroll;
+
+    .rpi-canvas-header {
+        margin: 30px;
+        .info-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 2%;
+            flex-direction: column;
+
+            .pi-media {
+                width: 100%;
+                margin: 3%;
+            }
+            
+            .pi-text {
+                width: 100%;
+                margin: 3%;
+            }
+            
+        }
+
+        .conclusion-container {
+            margin: 3%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+
+            .download-button {
+                margin-top: 5%;
+                // height: 30px;
+            }
+
+        }
+    }
+
+    .rpi-canvas-body {
+        margin: 30px;
+
+        // .download-button {
+        //     margin-bottom: 30px;
+        // }
+    }
+}

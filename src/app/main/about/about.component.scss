@@ -1,0 +1,128 @@
+@import "/src/styles/variables";
+@import "/src/styles/mixins";
+
+.about-container {
+  padding: 20px;
+  height: 100%;
+  // overflow: hidden auto;
+  // position: fixed;
+
+  .logo-icon {
+    background: none;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    height: 200px;
+    transform: scale(1);
+    // filter: invert(89%) sepia(20%) saturate(7430%) hue-rotate(351deg) brightness(103%) contrast(104%);
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .about-profile-image-container {
+      flex: 1;
+      min-width: 400px;
+      min-height: 575px;
+
+      img {
+        min-width: inherit;
+        min-height: inherit;
+      }
+    }
+
+    .about-body {
+      margin-left: 20px;
+      flex: 2;
+
+      .about-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .about-header-text-toolbar {
+          display: flex;
+          flex-direction: column;
+        //   justify-content: space-between;
+        }
+      }
+
+      .about-text {
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+.about-profile-image-container {
+  margin-bottom: 20px;
+  c-carousel {
+    margin-bottom: 30px;
+  }
+
+  .download-button-portrait {
+    width: 100%;
+  }
+}
+
+.icon-toolbar {
+  background-color: transparent;
+  justify-content: flex-start;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+  padding-left: unset;
+
+  .icon-container {
+    margin: 0px 30px 10px 0px;
+
+    button {
+      color: unset;
+      mat-icon {
+        height: auto;
+        transform: scale(2);
+        color: unset;
+      }
+    }
+  }
+}
+
+.download-button-portrait {
+  width: 100%;
+
+  margin-bottom: 50px;
+}
+
+#about-resume {
+  display: flex;
+  margin-top: 10px;
+
+  .resume-accordian {
+    flex: 1;
+    margin-bottom: 10%;
+    min-height: 100%;
+
+    label {
+      font-size: x-large;
+    }
+
+    .about-pdf-container {
+      min-height: fit-content;
+
+      pdf-viewer {
+        min-height: fit-content;
+        // max-width: 100%;
+        display: block;
+      }
+    }
+  }
+
+  .download-button {
+    margin-left: 2%;
+  }
+}

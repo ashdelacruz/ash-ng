@@ -1,0 +1,26 @@
+#Not yet used, to be implemented with K8S
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: personal-site-name
+spec:
+  selector:
+    matchLabels:
+      personal-site-key : personal-site-value 
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        personal-site-key : personal-site-value 
+    spec:
+      containers:
+      - name: personal-site-container
+        image: edelacr1/psite:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+
+#for creating a deployment in kubernetes
+# $ kubectl apply -f SPA-deployment.yaml
+# > deployment.apps/personal-site-name created

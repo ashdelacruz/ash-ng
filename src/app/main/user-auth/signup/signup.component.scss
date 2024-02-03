@@ -1,0 +1,110 @@
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  margin-top: 15px;
+  margin-bottom: 100px;
+
+  .signup-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .logo-icon {
+      background: none;
+      padding: 0;
+      border: 0;
+      cursor: pointer;
+      width: 140px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .signup-body {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    .signup-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+
+      .input-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+
+        gap: 5px;
+
+        mat-form-field {
+          width: 100%;
+        }
+
+        .form-error {
+          text-align: left;
+        }
+
+        label {
+          margin-right: 10px;
+        }
+
+        .password-reqs {
+          p {
+            font-size: 13px;
+            margin: unset;
+          }
+        }
+
+        .password-container {
+          display: flex;
+          align-items: baseline;
+          width: 100%;
+          gap: 5px;
+        }
+      }
+
+      .password-reqs {
+        margin-bottom: 10px;
+      }
+
+
+      .reqs-title {
+        font-size: 15px;
+        font-weight: bold;
+        width: 300px;
+      }
+
+      .approve-email-text {
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+        width: 300px;
+      }
+
+      .button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: auto;
+        width: 100%;
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+.password-reqs-text {
+  padding-left: 8px;
+}

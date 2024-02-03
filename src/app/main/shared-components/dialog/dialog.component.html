@@ -1,0 +1,93 @@
+<div>
+  <mat-progress-bar
+    mode="indeterminate"
+    *ngIf="stateService.isAsyncOperationRunning$ | async"
+    style="top: -25px"
+  ></mat-progress-bar>
+  <h1 mat-dialog-title id="dialog-title">
+    {{dialogData.dialogTitle }}
+    <!-- <button aria-disabled="true" class="close" mat-icon-button mat-dialog-close>
+      <mat-icon aria-disabled="true" class="close-icon">close</mat-icon>
+    </button> -->
+  </h1>
+
+  <mat-divider id="title-divider"></mat-divider>
+
+  <mat-dialog-content>
+    <!-- <div *ngIf="isBasicDialog" id="basic-dialog-content"> -->
+    <div *ngFor="let text of dialogData.dialogText">
+      <strong
+        *ngIf="text.header"
+        style="margin-bottom: 2rem; white-space: pre-wrap"
+        >{{text.header }}</strong
+      >
+
+      <ng-container *ngIf="text.body">
+        <p style="margin-bottom: 2rem; white-space: pre-wrap">
+          {{text.body }}
+        </p>
+        <br />
+      </ng-container>
+    </div>
+
+    <h3 *ngIf="seconds !== null">
+      {{timeRemaining$ | async | date : "mm:ss" }}
+    </h3>
+
+    <!-- <div *ngIf="isContactDialog" class="contact-input-container">
+      <form class="example-form">
+
+        <h3>Hello (USERNAME)</h3>
+        <mat-form-field class="contact-user-message">
+          <mat-label>Message</mat-label>
+          <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+        </mat-form-field>
+        <h3>Thank you</h3>
+      </form></div> -->
+
+
+    <!-- </div> -->
+    <app-user-mod-action
+      *ngIf="isUserModActionDialog || isApprovingUserDialog"
+      [isSingleUser]="isSingleUser"
+      [isApprovingUser]="isApprovingUserDialog"
+    >
+    </app-user-mod-action>
+
+    <app-login *ngIf="isSessionExpiredDialog" [isSessionExpiredLogin]="true">
+    </app-login>
+  </mat-dialog-content>
+
+  <mat-divider id="action-divider"></mat-divider>
+
+  <mat-dialog-actions>
+    <button
+      *ngIf="!isCloseDisabledDialog"
+      cdkFocusInitial
+      (click)="closeDialog()"
+      [disabled]="stateService.isAsyncOperationRunning$ | async"
+      mat-button
+      mat-dialog-close
+    >
+      {{ dialogData.cancelButtonLabel }}
+    </button>
+    <button
+      (click)="onSecondaryButtonClick()"
+      mat-raised-button
+      color="accent"
+      [disabled]="stateService.isAsyncOperationRunning$ | async"
+      *ngIf="dialogData.secondaryButtonLabel"
+    >
+      {{ dialogData.secondaryButtonLabel }}
+    </button>
+    <button
+      (click)="onPrimaryButtonClick()"
+      mat-raised-button
+      color="primary"
+      [disabled]="stateService.isAsyncOperationRunning$ | async"
+      *ngIf="dialogData.primaryButtonLabel"
+    >
+      {{ dialogData.primaryButtonLabel }}
+    </button>
+  </mat-dialog-actions>
+</div>

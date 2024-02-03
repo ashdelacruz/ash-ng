@@ -1,0 +1,34 @@
+{
+    "environment": "dev",
+    "apiUrls": {
+        "gutenbergUrl": "https://gutendex.com",
+        "jokeApiUrl": "https://v2.jokeapi.dev",
+        "imgFlipUrl": "https://api.imgflip.com",
+        "comBackendUrl": "http://fd-dcwebcon1-dev.floordecor.com:9300/OMSBackend/",
+        "waitTimeEstimatorUrl": "https://api-dev.flooranddecor.com/wait-time-estimator/v1/estimator",
+        "webServerHostname": "https://sb-dev-pubsubfunction.azurewebsites.net/",
+        "pickupSchedulerUrl": "https://fdazapidev.azure-api.net/pickup-scheduler-service/v1/pickup-scheduler",
+        "pltBackendUrl":"https://fdazapidev.azure-api.net/plt-api/",
+        "itemInquiryUrl": "https://fd-b2bdev.floordecor.com/",
+        "mobileIqUrl": "http://mobile-qa.floordecor.com",
+        "amplienceUrl": "https://i1b.adis.ws/s/flooranddecor",
+        "viewUrl": "https://api-dev.flooranddecor.com/order-activity/v1"
+    },
+    "connectionStrings": {
+        "appInsights": "",
+        "azureFunction": ""
+    },
+    "sessionKeys": {
+        "userSessionDataKey": "sbData",
+        "storePreferencesKey": "sbStorePreferences",
+        "browseBooksKey": "browseListOfBooks",
+        "searchBooksKey": "searchListOfBooks",
+        "booksTopicsKey": "booksTopicOptions"
+    },
+    "credentials": {
+        "imgFlipCreds": {
+            "uname": "EarlDelaCruz",
+            "pass": "hewgov-hajva3-cozwaD"
+        }
+    }
+}

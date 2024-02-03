@@ -1,0 +1,78 @@
+
+
+//Coolor palette
+$forest-green: #1D8E35;
+$light-forestgreen: #26B845;
+$light-green: #C4F7A1;
+$goldenrod: #d5a021;
+$light-goldenrod: #E2B547;
+$bluebell: #2156D5;
+$light-bluebell: #4774E2;
+$mint-cream: #F7FFF6;
+
+$primary-black: #2D3047; //space cadet
+$secondary-black: #414566;
+$primary-white: #f5f5f5;
+$secondary-white: #E6E6E6;
+
+// //Material theme builder
+// $primary: $goldenrod;
+// $secondary: #a18e6e;
+// $tertiary: #7d9875;
+// $neutral: #969088;
+
+
+//Midnight Cheese (mc)
+$mc-black: #212121;
+$mc-black2: #424242;
+$mc-black3: #616161;
+$mc-gold: #FFC107;
+$mc-gold2: #FFCA28;
+$mc-white: #E6E6E6;
+$mc-white2: #f5f5f5;
+$mc-red: #f44336;
+
+//Incredible Hulk (ih)
+$ih-green: #4CAF50; //mat.$green-palette, 500
+$ih-green2: #66BB6A; //mat.$deep-purple-palette, 600
+$ih-purple: #512DA8; //mat.$deep-purple-palette, 700
+$ih-purple2: #5E35B1; //mat.$deep-purple-palette, 600
+$ih-red: #BF360C; //mat.$red-palette, 900
+$ih-red2: #D84315; //mat.$red-palette, 800
+
+//Nurse Joy (nj)
+$nj-orange: #D81B60; //mat.$pink-palette, 600
+$nj-orange2: #E91E63; //mat.$pink-palette, 500
+$nj-bluegray: #607D8B; //mat.$blue-gray-palette, 500
+$nj-bluegray2: #78909C; //mat.$blue-gray--palette, 400
+$nj-orange: #FF3D00; //mat.$deep-orange-palette, A400
+
+$gt-brown:#00c853;
+$nj-orange: #ff3d00;
+
+//Giving Thanks (gt)
+$gt-brown: #5d4037; //mat.$pink-palette, 600
+$gt-brown2: #3e2723;
+$gt-orange: #f57c00; //mat.$blue-gray-palette, 500
+$gt-red:#d50000;
+
+//Baby Blue (bb)
+$bb-indigo: #3949AB; //mat.$indigo-palette, 600
+$bb-indigo2: #3F51B5; //mat.$indigo-palette, 500
+$bb-yellow: #F9A825; //mat.$yellow-palette, 800
+$bb-yellow2: #F9A825; //mat.$yellow-palette, 700
+$bb-red: #D84315; //mat.$red-palette, 800
+
+$bb-gray: #546E7A;
+$bb-light-blue: #80D8FF;
+$bb-pink: #e91e63;
+
+// /* variables.scss */
+// @import "@angular/material/theming";
+// // @import "/src/styles/themes.scss";
+
+// $primaryPalette: mat-palette($mat-indigo);
+// $accentPalette:  mat-palette($mat-pink, A200, A100, A400);
+
+// // the default warn palette is red, so use that if the theme doesn't define one
+// $warnPalette:    mat-palette($mat-red);

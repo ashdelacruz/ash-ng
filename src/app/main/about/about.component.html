@@ -1,0 +1,198 @@
+<div class="about-container">
+  <div [ngClass]="{ 'about-content': !isPortrait }">
+    <div class="about-profile-image-container" *ngIf="!isPortrait">
+      <gallery
+        [autoHeight]="true"
+        thumbPosition="bottom"
+        fluid
+        [items]="items"
+      ></gallery>
+    </div>
+    <div
+      class="about-body"
+      [ngStyle]="{ 'margin-bottom': isPortrait ? '20%' : 'unset' }"
+    >
+      <div class="about-body-text mat-typography">
+        <div class="about-header">
+          <div class="about-header-text-toolbar">
+            <div class="header-text">
+              <span>
+                <h1>Hello!</h1>
+              </span>
+              <!-- <br> -->
+              <span>
+                <h4>My name's Earl Ashleigh, but everyone calls me Ash</h4>
+              </span>
+              <br />
+            </div>
+            <mat-toolbar *ngIf="!isPortrait" class="icon-toolbar">
+              <div
+                *ngFor="let socialIcon of socialsIcons"
+                class="icon-container"
+                [matTooltipDisabled]="isMobile"
+                [matTooltip]="socialIcon.name"
+              >
+                <button
+                  mat-icon-button
+                  (click)="openInNewTab(socialIcon.link)"
+                  class="socials-icon"
+                >
+                  <mat-icon
+                    [svgIcon]="
+                      isDarkMode ? socialIcon.name : socialIcon.name + '-color'
+                    "
+                  ></mat-icon>
+                </button>
+              </div>
+              <a href="mailto:ashdc274@gmail.com" target="_top"
+                >ashdc274&#64;gmail.com</a
+              >
+            </mat-toolbar>
+          </div>
+
+          <img class="logo-icon" [src]="logoPath" />
+        </div>
+
+        <br />
+        <!-- <mat-divider></mat-divider> -->
+
+        <div class="about-profile-image-container" *ngIf="isPortrait">
+          <mat-toolbar class="icon-toolbar">
+            <div *ngFor="let socialIcon of socialsIcons" class="icon-container">
+              <button
+                mat-icon-button
+                (click)="openInNewTab(socialIcon.link)"
+                class="socials-icon"
+              >
+                <mat-icon
+                  [svgIcon]="
+                    isDarkMode ? socialIcon.name : socialIcon.name + '-color'
+                  "
+                ></mat-icon>
+              </button>
+            </div>
+
+            <a href="mailto:ashdc274@gmail.com" target="_top"
+              >ashdc274&#64;gmail.com</a
+            >
+          </mat-toolbar>
+        </div>
+        <span class="about-text">
+          <p>
+            I'm a full stack developer with over 4 years experience in the
+            Point-of-Sale, Payments, and Fulfillments industry. I began my
+            career primarily working on a monolithic Java POS application, with
+            a more recent focus on Angular web development.
+          </p>
+          <p>
+            I'm always open to learning new technologies, so outside of work I
+            usually find some new tech thing to hyperfixate on every few months.
+            I started working with Raspberry Pis a while back, completing one
+            project with soldered components (see Projects section). Most
+            recently I've been learning Docker, in fact this very website is
+            hosted from an Nginx Docker container running on a Raspberry Pi in
+            my living room.
+          </p>
+          <p>
+            When I'm not in front of a computer I enjoy watching movies while
+            snuggling with my cat, listening to a variety of music ranging from
+            Black Sabbath to BLACKPINK, and playing management sim games or
+            open-world RPGs.
+          </p>
+          <p>
+            I made this website as a way to learn Angular, hone my full stack
+            skills, and show off my work. See below for my resume.
+          </p>
+        </span>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <mat-toolbar
+        class="icon-toolbar"
+        [ngStyle]="{
+          'justify-content': isPortrait ? 'space-evenly' : 'flex-start'
+        }"
+      >
+        <div
+          *ngFor="let skillIcon of skillsIcons"
+          [matTooltipDisabled]="isMobile"
+          [matTooltip]="skillIcon.link"
+          [ngStyle]="{ 'margin-right': isPortrait ? '10px' : '30px' }"
+          class="icon-container"
+        >
+          <button mat-icon-button class="skills-icon" disabled="true">
+            <mat-icon
+              [svgIcon]="
+                isDarkMode ? skillIcon.name : skillIcon.name + '-color'
+              "
+            ></mat-icon>
+          </button>
+        </div>
+      </mat-toolbar>
+
+      <button
+        (click)="downloadResume()"
+        *ngIf="isPortrait"
+        mat-raised-button
+        class="download-button-portrait"
+        color="accent"
+      >
+        Download Resume
+      </button>
+
+      <div id="about-resume" *ngIf="!isPortrait">
+        <mat-accordion class="resume-accordian">
+          <mat-expansion-panel
+            (afterExpand)="scrollIntoView(downloadTooltip)"
+            (afterCollapse)="scrollToTop()"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <label>Resume</label>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="about-pdf-container">
+              <pdf-viewer
+                [src]="pdfSrc + pdfFileName"
+                [rotation]="0"
+                [original-size]="false"
+                [show-all]="true"
+                [fit-to-page]="true"
+                [zoom]="1"
+                [zoom-scale]="'page-width'"
+                [stick-to-page]="false"
+                [render-text]="true"
+                [external-link-target]="'blank'"
+                [autoresize]="true"
+                [show-borders]="false"
+                style="width: 100%; height: 600px"
+              ></pdf-viewer>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <button
+          (click)="downloadResume()"
+          mat-icon-button
+          class="download-button"
+          color="accent"
+          [matTooltipDisabled]="isMobile"
+          #downloadTooltip="matTooltip"
+          matTooltip="Download Resume"
+        >
+          <mat-icon>download</mat-icon>
+        </button>
+      </div>
+
+      <gallery
+        class="portrait-mode-gallery"
+        *ngIf="isPortrait"
+        [autoHeight]="true"
+        thumbPosition="bottom"
+        fluid
+        [items]="items"
+      ></gallery>
+    </div>
+  </div>
+</div>

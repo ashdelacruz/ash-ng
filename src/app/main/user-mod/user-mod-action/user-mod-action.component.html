@@ -1,0 +1,175 @@
+<div class="umod-action-container">
+  <!-- <div *ngIf="isSingleUser && !isApprovingUser" id="info-actions">
+    <div id="uname-actions">
+      <div id="current-uname">
+        <label>Current: </label>
+        <p>{{ currentUname }}</p>
+      </div>
+      <div id="new-uname">
+        <label>New: </label><input matInput id="uname-input" />
+      </div>
+      <button mat-raised-button color="primary" id="uname-btn">
+        {{ unameText }}
+      </button>
+    </div>
+
+    <mat-divider *ngIf="!isLandscape"></mat-divider>
+
+    <div id="email-actions">
+      <div id="current-email">
+        <label>Current:</label>
+        <p>{{ currentEmail }}</p>
+      </div>
+      <div id="new-email">
+        <label>New: </label><input matInput id="email-input" />
+      </div>
+      <button mat-raised-button color="primary" id="email-btn">
+        {{ emailText }}
+      </button>
+    </div>
+  </div>
+
+  <mat-divider *ngIf="isSingleUser && !isApprovingUser"></mat-divider> -->
+
+  <div *ngIf="!isSingleUser && !isApprovingUser" id="pending-actions">
+    <button
+      mat-raised-button
+      color="accent"
+      id="approve-btn"
+      (click)="onApproveBtnClick()"
+      [disabled]="!isAdminSession"
+    >
+      {{ approveText }}
+    </button>
+
+    <button
+      mat-raised-button
+      color="warn"
+      id="deny-btn"
+      (click)="onDenyBtnClick()"
+      [disabled]="!isAdminSession"
+    >
+      {{ denyText }}
+    </button>
+  </div>
+
+
+  <div id="resend-activation-action" *ngIf="isSingleUser && isModifyingApprovedUser && !isApprovingUser">
+    <div id="resend-text" *ngIf="isSingleUser">
+      <p>User has been approved, but still needs to activate their account <br> 
+        by logging in via the link in their email.</p>
+    </div>
+    <button
+      mat-raised-button
+      color="primary"
+      id="guest-btn"
+      [disabled]="isModifyingGuest"
+      (click)="onResendBtnClick()"
+    >
+      {{ resendActivationText }}
+    </button>
+  </div>
+  <mat-divider *ngIf="isSingleUser && !isApprovingUser"></mat-divider>
+
+
+
+  <mat-divider *ngIf="!isSingleUser && !isApprovingUser"></mat-divider>
+
+  <div id="status-actions" *ngIf="!isApprovingUser && !isModifyingApprovedUser">
+    <button
+      mat-raised-button
+      color="accent"
+      id="activate-btn"
+      [disabled]="isSingleUser && isModifyingActiveUser"
+      (click)="onActivateBtnClick()"
+    >
+      {{ activateText }}
+    </button>
+
+    <button
+      mat-raised-button
+      color="warn"
+      id="deactivate-btn"
+      [disabled]="isSingleUser && !isModifyingActiveUser"
+      (click)="onDeactivateBtnClick()"
+    >
+      {{ deactivateText }}
+    </button>
+  </div>
+
+  <mat-divider *ngIf="!isApprovingUser && !isModifyingApprovedUser"></mat-divider>
+
+  <div id="role-actions">
+    <button
+      mat-raised-button
+      color="primary"
+      id="guest-btn"
+      [disabled]="isModifyingGuest"
+      (click)="onRoleBtnClick('Set Guest')"
+    >
+      {{ guestText }}
+    </button>
+
+    <button
+      mat-raised-button
+      color="primary"
+      id="user-btn"
+      [disabled]="isModifyingUser"
+      (click)="onRoleBtnClick('Set User')"
+    >
+      {{ userText }}
+    </button>
+
+    <button
+      mat-raised-button
+      color="primary"
+      id="mod-btn"
+      [disabled]="isModifyingMod || !isAdminSession"
+      (click)="onRoleBtnClick('Set Mod')"
+    >
+      {{ modText }}
+    </button>
+
+    <button
+      mat-raised-button
+      color="primary"
+      id="admin-btn"
+      [disabled]="isModifyingAdmin || !isAdminSession"
+      (click)="onRoleBtnClick('Set Admin')"
+    >
+      {{ adminText }}
+    </button>
+  </div>
+
+  <!-- <mat-divider *ngIf="!isApprovingUser"></mat-divider>
+
+  <div id="contact-action" *ngIf="!isApprovingUser">
+    <div id="contact-email" *ngIf="isSingleUser">
+      <label>Email:</label>
+      <p>{{ currentEmail }}</p>
+    </div>
+    <button
+      mat-raised-button
+      color="primary"
+      id="guest-btn"
+      [disabled]="isModifyingGuest"
+      (click)="onContactUserBtnClick()"
+    >
+      {{ contactText }}
+    </button>
+  </div> -->
+
+  <mat-divider *ngIf="!isApprovingUser"></mat-divider>
+
+  <div id="delete-action" *ngIf="!isApprovingUser">
+    <button
+      mat-raised-button
+      color="warn"
+      [disabled]="!isAdminSession"
+      id="delete-btn"
+      (click)="onDeleteBtnClick()"
+    >
+      {{ deleteText }}
+    </button>
+  </div>
+</div>

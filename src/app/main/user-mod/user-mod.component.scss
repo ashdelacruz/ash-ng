@@ -1,0 +1,90 @@
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.user-mod-container {
+  display: flex;
+  padding: 10px 0px 10px 0px;
+  flex-wrap: wrap;
+
+  .user-mod-title {
+    flex: 1 1 100%;
+    padding: 0px 10px 0px 10px;
+  }
+
+  .filter-container {
+    flex: 1 1 100%;
+    padding: 0px 10px 0px 10px;
+  }
+
+  .select-action-container {
+    flex: 1 1 30%;
+    padding: 0px 10px 10px 10px;
+    .selected-users {
+      margin-bottom: 5px;
+      .selected-title {
+        display: flex;
+        align-items: baseline;
+        gap: 5px;
+      }
+    }
+
+    .action-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+
+      .reset-demo-button {
+        justify-self: center;
+      }
+    }
+  }
+
+  .user-table-container {
+    //height: 72dvh on landscape, 60dvh on portrait
+    flex: 1 1 70%;
+    max-width: 100dvw;
+    display: flex;
+    flex-direction: column;
+
+    .user-table-title {
+      display: inline-flex;
+      gap: 5px;
+      align-items: baseline;
+      padding-left: 10px;
+    }
+
+    .table-container {
+      overflow: auto;
+      .user-table {
+        .action-pending {
+          display: flex;
+          gap: 5px;
+        }
+
+        .user-status-cell {
+          gap: 5px;
+          height: inherit;
+          align-items: center;
+        }
+
+        .no-data-message {
+          margin-left: 10px;
+          margin-top: 10px;
+        }
+
+        .resend-button {
+          width: max-content;
+        }
+      }
+    }
+
+    .mat-paginator-sticky {
+      bottom: 0px;
+      position: sticky;
+      z-index: 10;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.mat-mdc-dialog-title {
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: baseline;
+
+    // .close {
+    //     flex
+    // }
+}
+
+.contact-user-message {
+    width: -webkit-fill-available;
+}
+
+#title-divider {
+    margin-bottom: 20px;
+}
+
+#action-divider {
+    margin-top: 20px;
+}
+
+mat-dialog-actions {
+    display: flex;
+    justify-content: space-between;
+}

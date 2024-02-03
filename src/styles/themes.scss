@@ -1,0 +1,347 @@
+
+/**
+
+NO LONGER USED
+After uprading to Angular 17, the for-each functionality 
+for $app-themes stopped working.
+
+I moved the theme definitions to styles.scss, 
+and refactored theming to work without the for-each
+
+**/
+
+/**
+* Created at 1397/12/14 (2019/3/5).
+* @author {@link https://mirismaili.github.io S. Mahdi Mir-Ismaili}
+*/
+
+
+@use "@angular/material" as mat;
+
+@mixin define-css-classes($theme) {
+  @include angular-material-theme($theme);
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  // CSS THEME-DEPENDENT-STYLES ARE HERE:
+  .theme-dependent-colors {
+    background: mat-color($primary);
+    color: mat-color($accent);
+  }
+}
+
+/**
+* Define your custom themes in this map. 
+* The `key` of each member is the name of CSS class for that theme. 
+* To better understanding the schema of the map, see `@each` loop below and especially pay attention to 
+* `map-has-key()` functions.
+*/
+
+//Midnight Cheese (mc)
+$mc-primary-palette: mat.define-palette(mat.$amber-palette, 500);
+$mc-accent-palette: mat.define-palette(mat.$gray-palette, 900);
+
+$mc-dark-primary-palette: mat.define-palette(mat.$gray-palette, 900);
+$mc-dark-accent-palette: mat.define-palette(mat.$amber-palette, 600);
+$mc-warn-palette: mat.define-palette(mat.$red-palette);
+
+$MidnightCheese-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $mc-primary-palette,
+      accent: $mc-accent-palette,
+      warn: $mc-warn-palette,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+$MidnightCheese-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $mc-dark-primary-palette,
+      accent: $mc-dark-accent-palette,
+      warn: $mc-warn-palette,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+//Incredible Hulk (ih)
+$ih-primary-palette: mat.define-palette(mat.$green-palette, 500);
+$ih-accent-palette: mat.define-palette(mat.$deep-purple-palette, 700);
+$ih-warn-palette: mat.define-palette(mat.$red-palette, 800);
+
+$ih-dark-primary-palette: mat.define-palette(mat.$deep-purple-palette, 600);
+$ih-dark-accent-palette: mat.define-palette(mat.$green-palette, 400);
+$ih-dark-warn-palette: mat.define-palette(mat.$red-palette, 900);
+
+$IncredibleHulk-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $ih-primary-palette,
+      accent: $ih-accent-palette,
+      warn: $ih-warn-palette,
+    ),
+    typography:
+      mat.define-typography-config(
+        $font-family: "Times",
+    
+        $headline-5:
+          mat.define-typography-level(28pt),
+        $headline-6:
+        mat.define-typography-level(24pt),
+        $subtitle-1:
+        mat.define-typography-level(20pt),
+        $body-1:
+        mat.define-typography-level(18pt),
+         ),
+    density: 0,
+  )
+);
+$IncredibleHulk-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $ih-dark-primary-palette,
+      accent: $ih-dark-accent-palette,
+      warn: $ih-dark-warn-palette,
+    ),
+    typography:
+      mat.define-typography-config(
+        $font-family: "Times",
+
+        $headline-5:
+          mat.define-typography-level(28pt),
+        $headline-6:
+        mat.define-typography-level(24pt),
+        $subtitle-1:
+        mat.define-typography-level(20pt),
+        $body-1:
+        mat.define-typography-level(18pt),
+      ),
+    density: 0,
+  )
+);
+
+//Giving Thanks
+$gt-primary-palette: mat.define-palette(mat.$orange-palette, 700);
+$gt-accent-palette: mat.define-palette(mat.$brown-palette, A700);
+$gt-warn-palette: mat.define-palette(mat.$red-palette, A700);
+
+$gt-dark-primary-palette: mat.define-palette(mat.$brown-palette, 900);
+$gt-dark-accent-palette: mat.define-palette(mat.$orange-palette, A700);
+$gt-dark-warn-palette: mat.define-palette(mat.$red-palette, A700);
+
+$GivingThanks-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $gt-primary-palette,
+      accent: $gt-accent-palette,
+      warn: $gt-warn-palette,
+    ),
+    typography:
+      mat.define-typography-config(
+        $font-family: "'Comic Sans MS', 'Comic Sans'",
+
+ 
+        $headline-5:
+          mat.define-typography-level(25pt),
+        $headline-6:
+        mat.define-typography-level(20pt),
+        $subtitle-1:
+        mat.define-typography-level(18pt),
+        $body-1:
+        mat.define-typography-level(16pt),
+      ),
+    density: 0,
+  )
+);
+$GivingThanks-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $gt-dark-primary-palette,
+      accent: $gt-dark-accent-palette,
+      warn: $gt-dark-warn-palette,
+    ),
+    typography:
+      mat.define-typography-config(
+        $font-family: "'Comic Sans MS', 'Comic Sans'",
+
+        $headline-5:
+          mat.define-typography-level(25pt),
+        $headline-6:
+        mat.define-typography-level(20pt),
+        $subtitle-1:
+        mat.define-typography-level(18pt),
+        $body-1:
+        mat.define-typography-level(16pt),
+      ),
+    density: 0,
+  )
+);
+
+//Baby Blue (bb)
+$bb-primary-palette: mat.define-palette(mat.$light-blue-palette, A100);
+$bb-accent-palette: mat.define-palette(mat.$blue-gray-palette, 600);
+$bb-warn-palette: mat.define-palette(mat.$pink-palette, 500);
+
+$bb-dark-primary-palette: mat.define-palette(mat.$blue-grey-palette, 600);
+$bb-dark-accent-palette: mat.define-palette(mat.$light-blue-palette, A100);
+$bb-dark-warn-palette: mat.define-palette(mat.$pink-palette, 500);
+
+$BabyBlue-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $bb-primary-palette,
+      accent: $bb-accent-palette,
+      warn: $bb-warn-palette,
+    ),
+    typography:
+      mat.define-typography-config(
+        $font-family: "courier, monospace",
+   
+        $headline-5:
+          mat.define-typography-level(28pt),
+        $headline-6:
+        mat.define-typography-level(19pt),
+        $subtitle-1:
+        mat.define-typography-level(17pt),
+        $body-1:
+        mat.define-typography-level(16pt)
+        ),
+    density: 0,
+  )
+);
+$BabyBlue-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $bb-dark-primary-palette,
+      accent: $bb-dark-accent-palette,
+      warn: $bb-dark-warn-palette,
+    ),
+    typography:
+      mat.define-typography-config(
+        $font-family: "courier, monospace",
+
+        $headline-5:
+          mat.define-typography-level(28pt),
+        $headline-6:
+        mat.define-typography-level(19pt),
+        $subtitle-1:
+        mat.define-typography-level(17pt),
+        $body-1:
+        mat.define-typography-level(16pt),
+      ),
+    density: 0,
+  )
+);
+
+/*
+//define topography level arguments
+$my-custom-level: mat.define-typography-level(
+  $font-family: Roboto,
+  $font-weight: 400,
+  $font-size: 1rem,
+  $line-height: 1,
+  $letter-spacing: normal,
+);
+
+  $headline-1: mat.define-typography-level(400, 1rem, 1, $letter-spacing: -0.05em),    
+  $headline-2: mat.define-typography-level(400, 1rem, 1, $letter-spacing: -0.05em),    
+  $body-1: mat.define-typography-level(400, 1rem, 1, $letter-spacing: -0.05em),    
+  $body-2: mat.define-typography-level(400, 1rem, 1, $letter-spacing: -0.05em),    
+           
+
+//body-2 is for nav title and item text 
+
+//body-1 affects h4
+//body-2 affects labels 
+
+*/
+
+$app-themes: (
+  incredible-hulk: $IncredibleHulk-theme,
+  midnight-cheese: $MidnightCheese-theme,
+  giving-thanks: $GivingThanks-theme,
+  baby-blue: $BabyBlue-theme,
+
+  incredible-hulk-dark: $IncredibleHulk-dark-theme,
+  midnight-cheese-dark: $MidnightCheese-dark-theme,
+  giving-thanks-dark: $GivingThanks-dark-theme,
+  baby-blue-dark: $BabyBlue-dark-theme,
+);
+
+@each $css-class, $theme in $app-themes {
+  $primary: if(
+    map-has-key($theme, primary),
+    map-get($theme, primary),
+    mat-palette(map-get($theme, primary-base))
+  );
+
+  $accent: if(
+    map-has-key($theme, accent),
+    map-get($theme, accent),
+    mat-palette(map-get($theme, accent-base))
+  );
+
+  $warn: if(
+    map-has-key($theme, warn),
+    map-get($theme, warn),
+    mat-palette(
+      if(map-has-key($theme, warn-base), map-get($theme, warn-base), $mat-red)
+    )
+  );
+
+  $red: if(
+    map-has-key($theme, warn),
+    map-get($theme, warn),
+    mat-palette(
+      if(map-has-key($theme, warn-base), map-get($theme, warn-base), $mat-red)
+    )
+  );
+
+  // .#{$css-class} {
+  //     @include mat.all-component-themes($theme);
+  // }
+
+  // .#{$css-class}-dark {
+  //     @include mat.all-component-colors($theme);
+  // }
+
+  .theme-light-background.#{$css-class} {
+    background-color: mat-color($primary);
+  }
+
+  .theme-darl-background.#{$css-class} {
+    background-color: mat-color($primary);
+  }
+
+  .theme-primary-background.#{$css-class} {
+    background-color: mat-color($primary);
+  }
+
+  .theme-accent-background.#{$css-class} {
+    background-color: mat-color($accent);
+  }
+
+  .theme-warn-background.#{$css-class} {
+    background-color: mat-color($warn);
+  }
+
+  .theme-primary-color.#{$css-class} {
+    color: mat-color($primary);
+  }
+
+  .theme-accent-color.#{$css-class} {
+    color: mat-color($accent);
+  }
+
+  .theme-warn-color.#{$css-class} {
+    color: mat-color($warn);
+  }
+}

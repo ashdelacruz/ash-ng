@@ -1,0 +1,43 @@
+<div class="home-container">
+  <div class="home-header">
+    <div class="header-text">
+      <span>
+        <h1>Hello!</h1>
+      </span>
+      <br />
+      <span>
+        <h2>Welcome to my website</h2>
+      </span>
+    </div>
+    <img class="logo-icon" [src]="logoPath" />
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="home-body">
+    <div class="home-about">
+      <button color="accent" mat-raised-button routerLink="/about">
+        Click here to see About page
+      </button>
+    </div>
+
+    <div class="home-cat">
+      <!-- <video class="cat-video" controls>
+        <source src="/assets/media/cat/kenickie.mov" alt="kenickie" type="video/mp4" >
+      </video> -->
+
+      <img src="/assets/media/cat/kenickie_head.png" />
+      <div class="home-cat-text" *ngIf="!userSessionService.isAuthenticated()">
+        <h4>This is my cat</h4>
+        <h4>Want to see FREE pictures of this wonderful cat?</h4>
+        <button color="accent" mat-button routerLink="/user-auth/login">
+          Click here to log in
+        </button>
+        <p>or</p>
+        <button color="accent" mat-button routerLink="/user-auth/signup">
+          Click here to create an account
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

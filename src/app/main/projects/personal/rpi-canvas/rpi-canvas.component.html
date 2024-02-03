@@ -1,0 +1,90 @@
+<div class="rpi-canvas-container" [ngClass]="{'portrait': isPortrait}">
+
+  <div class="rpi-canvas-header">
+    <h1>
+      Raspberry Pi Canvas
+    </h1>
+
+    <p>This project is an RGB LED display controleld by a Raspberry Pi.
+      <br/>
+      <a href="https://www.reddit.com/r/raspberry_pi/comments/ombwwg/my_64x64_rgb_led_matrix_album_art_display_pi_3b/" target="_blank">
+        Here is the original project from Reddit user u/gonnabuysomewindows 
+      </a>
+    </p>
+    <div class="info-container">
+      <img class="pi-media" ngSrc="/assets/media/rpi/keith-harring_untitled.png" alt="keith-harring_untitled" width="400" height="400" priority/>
+      <img class="pi-media" ngSrc="/assets/media/rpi/hardware.png" alt="keith-harring_untitled" width="400" height="400" priority />
+    </div>
+
+    <div class="info-container">
+      <h4 class="pi-text">My initial goal was to create an album cover display. It works via Airplay 2 so you can connect to it from any iOS
+        device. You can Airplay to the Pi Canvas alongside any other Airplay 2 enabled speaker or headphones, and it will
+        display the album cover of whatever song is playing in Apple Music.</h4>
+  
+      <video class="pi-video" controls>
+        <source src="/assets/media/rpi/album_cover_demo.mov" alt="album_cover_demo" type="video/mp4" >
+      </video>
+    </div>
+
+    <div class="info-container">
+      <video controls class="pi-video">
+        <source src="/assets/media/rpi/art_demo.mov" alt="art_demo" type="video/mp4">
+      </video>
+
+    <h4 class="pi-text"> I added a secondary "Art Display" mode which just displays an image or series of images, stored locally on the Pi. You can
+      control which images will be shown, the speed at which they're shown, and upload new images directly from your
+      iPhone.
+    </h4>
+    </div>
+ 
+    <div class="info-container">
+      <h4 class="pi-text">I created a suite of iOS shortcuts to control the Pi Canvas over wifi.
+        It uses the "Run script over SSH" shortcut to do most of the work, so it requires
+        you to set up an SSH key from the Pi. 
+      </h4>
+  
+      <img class="pi-media" ngSrc="/assets/media/rpi/ios_shortcuts.jpeg" alt="ios-shortcuts" width="400" height="400" priority  />
+    </div>
+
+    <div class="conclusion-container">
+
+      <h4 class="pi-text">Overall, this project exposed me to a lot of different technologies. 
+        All of the coding was done on the command line and I had previous experience working on Linux systems,
+        both of which helped me understand the Raspberry Pi and how to run servers on it. I learned how to create bluetooth
+        and Airplay connections using MQTT and shairport-sync. I'd never worked on hardware before though so I had to 
+        learn about eletronics and soldering for this project. If you want to give it a try yourself, you can 
+        download a detailed project guide below. 
+
+      </h4>
+     
+  
+      <button mat-raised-button color="accent" (click)="downloadProjectGuide()" class="download-button">
+        Download Project Guide (.md)
+      </button>
+
+
+
+    </div>
+
+  </div>
+
+  <div class="rpi-canvas-body">
+
+    <div class="info-container">
+
+    </div>
+
+
+    <!-- <textarea class="variable-textarea" [(ngModel)]="markdownText"></textarea> -->
+    <!-- <markdown class="variable-binding" [data]="markdownText"></markdown> -->
+<!-- 
+    <div class="markdown-container">
+      <markdown class="variable-binding markdown-component"
+        [ngSrc]="'/assets/documents/RPI-display_album_covers_on_led_matrix.md'"></markdown>
+    </div> -->
+  </div>
+
+
+
+
+</div>

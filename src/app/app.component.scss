@@ -1,0 +1,221 @@
+@import "/src/styles/variables";
+
+.app-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .logo-icon {
+    background: none;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    width: 28px;
+  }
+
+  .menu-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1000;
+
+    mat-toolbar {
+      display: flex;
+      z-index: 1000;
+
+      .app-title {
+        margin: 0px 10px 0px 10px;
+        font-size: medium;
+      }
+
+      .toolbar-item-spacer {
+        flex: 1 1 auto;
+      }
+    }
+  }
+
+  .app-content {
+    position: absolute;
+    top: 57px; //64px
+    padding: unset;
+    width: inherit;
+    min-height: calc(100dvh - 57px); //64px
+  }
+}
+
+@mixin size($width, $height: null) {
+  width: $width;
+  height: if($height==null, $width, $height);
+}
+
+//Change Theme
+.theme-selectors-container {
+  width: 190px;
+  margin: 0 8px;
+
+  button.theme-selector {
+    // div.theme-primary-background {
+    //   @include size(70px);
+    //   border-radius: 50%;
+    // }
+
+    // div.theme-accent-background {
+    //   @include size(25px);
+    //   position: absolute;
+    //   bottom: 0;
+    //   left: 0;
+    // }
+
+    // div.theme-warn-background {
+    //   @include size(15px);
+    //   position: absolute;
+    //   bottom: 7%;
+    //   left: 20%;
+    //   transform: rotate(45deg);
+    // }
+
+    div.theme-primary {
+      @include size(70px);
+      border-radius: 50%;
+    }
+
+    div.theme-accent {
+      @include size(25px);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      // background-color: $mc-black;
+    }
+
+    div.theme-warn {
+      @include size(15px);
+      position: absolute;
+      bottom: 7%;
+      left: 20%;
+      transform: rotate(45deg);
+      // background-color: $mc-red;
+    }
+
+    div.mc-primary {
+      background-color: $mc-gold;
+    }
+
+    div.mc-accent {
+      background-color: $mc-black;
+    }
+
+    div.mc-warn {
+      background-color: $mc-red;
+    }
+
+    div.ih-primary {
+      background-color: $ih-green;
+    }
+
+    div.ih-accent {
+      background-color: $ih-purple;
+    }
+
+    div.ih-warn {
+      background-color: $ih-red;
+    }
+
+    div.gt-primary {
+      background-color: $gt-orange;
+    }
+
+    div.gt-accent {
+      background-color: $gt-brown;
+    }
+
+    div.gt-warn {
+      background-color: $gt-red;
+    }
+
+    div.bb-primary {
+      background-color: $bb-light-blue;
+    }
+
+    div.bb-accent {
+      background-color: $bb-gray;
+    }
+
+    div.bb-warn {
+      background-color: $bb-pink;
+    }
+
+    .theme-check {
+      font-size: 2.2em;
+    }
+
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.current-theme-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.current-user-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+
+.version-num {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: baseline;
+  margin-top: 10px;
+}
+
+.nav-position-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dark-mode-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // width: 350px;
+  .dark-mode-radio-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1;
+    text-align: center;
+    width: min-content;
+  }
+  .mat-mdc-radio-button {
+    flex-direction: column;
+  }
+}
+
+//Reposition menu
+.switch-menu-container {
+  display: flex;
+  justify-content: center;
+
+  .switch-menu-button {
+    width: 70%;
+    height: auto;
+  }
+}
+
+.nav-position-label {
+  margin: 0px 10px 0px 10px;
+}
