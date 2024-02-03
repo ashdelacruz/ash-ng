@@ -31,23 +31,24 @@ export function isEmpty(value: any) {
  */
 export function parseStatus(user: UserSessionData): string {
 
-	if(!user.accountNonLocked) {
-		return "Locked";
-	}
 
-	if(user.enabled) {
-		if(user.lastLogin == null && !isEmpty(user.authorities)) {
-		  return "Pending Activation";
+
+	if (user.enabled) {
+		if (user.lastLogin == null && !isEmpty(user.authorities)) {
+			return "Pending Activation";
 		} else {
-		  return "Enabled";
+			if (!user.accountNonLocked) {
+				return "Locked";
+			}
+			return "Enabled";
 		}
-	  } else {
-		if(isEmpty(user.authorities)) {
-		  return "Pending Approval";
+	} else {
+		if (isEmpty(user.authorities)) {
+			return "Pending Approval";
 		} else {
-		  return "Disabled";
+			return "Disabled";
 		}
-	  }
+	}
 }
 
 export let remove = _.remove;

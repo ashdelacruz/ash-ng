@@ -184,7 +184,7 @@
                 Deny
               </button>
             </div>
-            <div *ngIf="userRow.authorities.length > 0 && userRow.lastLogin !== null && userRow.accountNonLocked" class="action-user">
+            <div *ngIf="userRow.enabled && userRow.lastLogin !== null && userRow.accountNonLocked" class="action-user">
               <button
                 mat-raised-button
                 color="primary"
@@ -194,7 +194,7 @@
                 Modify
               </button>
             </div>
-            <div *ngIf="userRow.enabled && userRow.lastLogin === null && userRow.accountNonLocked" class="action-user">
+            <div *ngIf="userRow.enabled && userRow.lastLogin === null" class="action-user">
               <button
                 mat-raised-button
                 color="primary"
@@ -204,7 +204,7 @@
                 Resend Activation
               </button>
             </div>
-            <div *ngIf="!userRow.accountNonLocked" class="action-user">
+            <div *ngIf="userRow.enabled && userRow.lastLogin !== null && !userRow.accountNonLocked" class="action-user">
               <button
                 mat-raised-button
                 color="primary"
