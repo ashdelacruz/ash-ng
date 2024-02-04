@@ -129,7 +129,7 @@ export class LoginComponent {
 						this.userSessionService.setUser(resp, resp);
 						this.userModService.isDemoMode = resp.authorities.length < 3;
 
-						this.router.navigate(["settings"]);
+						this.router.navigate(["home"]);
 					},
 					error: err => {
 						this.spinnerService.stop();

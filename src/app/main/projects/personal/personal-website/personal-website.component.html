@@ -1,0 +1,137 @@
+<div class="psite-container">
+  <div class="psite-header">
+    <h1>Personal Website</h1>
+
+    <p>
+      Here are links to the Github repos and the Docker images for this project
+    </p>
+    <div class="links-container">
+      <a href="https://github.com/ashdelacruz/ash-ng" target="_blank">
+        Angular Frontend
+      </a>
+      ,
+      <a href="https://github.com/ashdelacruz/ash-spring" target="_blank">
+        SpringBoot Backend
+      </a>
+      ,
+      <a href="https://github.com/ashdelacruz/ash-compose" target="_blank">
+        Docker Compose
+      </a>
+      <br />
+      <br />
+
+      <a
+        href="https://hub.docker.com/layers/edelacr1/ash-ng/latest/images/sha256-28641993ae20c71d98a9ec2e6ef173ed44bfa3684946458a0daf760d37a849c0?context=repo"
+        target="_blank"
+      >
+        Frontend Docker Image
+      </a>
+      ,
+      <a
+        href="https://hub.docker.com/layers/edelacr1/ash-spring/latest/images/sha256-0e6491eee07ec9fdf0ee3c91153d7e7d30d207ecb6c5949c216b2b76a431e369?context=repo"
+        target="_blank"
+      >
+        Backend Docker Image
+      </a>
+    </div>
+
+    <br />
+    <p>
+      Heads up, these images use a linux/arm/v7 platform because they run on a
+      Raspberry Pi
+    </p>
+  </div>
+
+  <div class="psite-body">
+    <div class="info-container">
+      <img
+        class="pi-media"
+        ngSrc="/assets/media/psite/capacitor.jpg"
+        alt="capacitor_implementation"
+        width="400"
+        height="400"
+        priority
+      />
+      <h4 class="pi-text">
+        <h1>Presentation</h1>
+        I built the frontend originally using Angular 16. Notable features
+        include session management with JWTs, robust form handling, and dynamic
+        themeing. <br />I also used Capacitor to create iOS and Android runtimes
+        for the project, but they are not available on the App or Play store
+        because that costs money and I ain't tryna do all that.
+      </h4>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="info-container">
+      <h4 class="pi-text">
+        <h1>Persistence</h1>
+        Backend uses SpringBoot 3. Notable features include JWT and
+        token url validation, SpringSecurity authentication framework, and
+        custom UserDetails implementation. <br />Initially I set up the Email
+        Service using AWS SES to allow for a custom ashdelacruz.com from email.
+        I set up SQS queues and SNS topics to handle bounces and complaints, but
+        AWS denied my request for production access. So I moved to Gmail SMTP,
+        without a custom domain.
+      </h4>
+      <img
+        class="pi-media"
+        ngSrc="/assets/media/psite/token_url.jpg"
+        alt="capacitor_implementation"
+        width="400"
+        height="400"
+        priority
+      />
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="info-container">
+        <img
+        class="pi-media"
+        ngSrc="/assets/media/psite/mod_board.jpg"
+        alt="capacitor_implementation"
+        width="400"
+        height="400"
+        priority
+      />
+      <h4 class="pi-text">
+        <h1>Database</h1>
+        I'm using MongoDB as my database. Coming from a SQL-heavy IBM stack, I
+        was hesitant to make the switch to NoSQL. But the setup is quick,
+        intuitive, and most importantly, free.
+        <br>The project provides a UI for User Moderation, accesible only to Moderator or Admin level users, 
+        althought there is a <a routerLink="/user-mod" target="_top"
+        >demo version</a
+      > available. 
+        The project also contains a User Settings section to allow users to modify their own info. 
+      </h4>
+    </div>
+
+
+    <mat-divider></mat-divider>
+
+    <div class="info-container">
+      <h4 class="pi-text" >
+        <h1>Host</h1>
+        The whole application is hosted on a RaspberryPi 4 Model B in my living
+        room. Both frontend and backend are running as Docker containers, and
+        are launched via Docker Compose.
+        <br />
+        The frontend container uses an nginx image to run the Angular project,
+        with custom config to enable SSL.
+      </h4>
+    </div>
+
+    <div class="todo-container">
+      <h4 class="pi-text">
+        <h1>TODO</h1>
+        <li>Data abstraction</li>
+        <li>Fetch config from backend</li>
+        <li>Proper version and environment handling</li>
+        <li>Add window.beforeUnload Listener</li>
+      </h4>
+    </div>
+  </div>
+</div>

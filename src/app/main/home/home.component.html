@@ -38,6 +38,12 @@
           Click here to create an account
         </button>
       </div>
+
+      <div class="cat-button" *ngIf="userSessionService.isAuthenticated()">
+        <button color="accent" mat-button routerLink="/cat">
+          Click here for cat
+        </button>
+      </div>
     </div>
   </div>
 </div>

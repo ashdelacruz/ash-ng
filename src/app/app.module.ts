@@ -29,6 +29,7 @@ import { AboutComponent } from './main/about/about.component';
 import { ContactComponent } from './main/contact/contact.component';
 import { HomeComponent } from './main/home/home.component';
 import { RpiCanvasComponent } from './main/projects/personal/rpi-canvas/rpi-canvas.component';
+import { PersonalWebsiteComponent } from './main/projects/personal/personal-website/personal-website.component';
 import { ProjectsComponent } from './main/projects/projects.component';
 import { CardComponent } from './main/shared-components/card/card.component';
 import { DialogComponent } from './main/shared-components/dialog/dialog.component';
@@ -66,6 +67,7 @@ export function initConfig(
     SpinnerComponent,
     ProjectsComponent,
     RpiCanvasComponent,
+    PersonalWebsiteComponent,
     BlockCopyPasteDirective,
     StreamingContentComponent,
     LoginComponent,

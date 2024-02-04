@@ -7,7 +7,6 @@
       [ngStyle]="{ 'flex-direction': isSideNavOnLeft ? 'row' : 'row-reverse',
 			'padding-left': isUserOniPhone && isLandscape ? '5%' : '16px', 
 			'padding-right': isUserOniPhone && isLandscape ? '5%' : '16px', }"
- 
     >
       <!--Menu nav-->
       <button
@@ -23,9 +22,7 @@
         </span>
       </button>
       <span class="app-title" routerLink="/"
-        ><mat-label class="site-title" 
-          >AshDelaCruz.com</mat-label
-        ></span
+        ><mat-label class="site-title">AshDelaCruz.com</mat-label></span
       >
       <img class="logo-icon" [src]="logoPath" *ngIf="isLandscape" />
       <span class="toolbar-item-spacer"></span>
@@ -33,11 +30,17 @@
       <mat-menu #navMenu="matMenu">
         <button mat-menu-item (click)="navigateToRoute('home')">Home</button>
         <button mat-menu-item (click)="navigateToRoute('about')">About</button>
-        <button mat-menu-item (click)="navigateToRoute('cat')" *ngIf="userSessionService.isAuthenticated()">My Cat</button>
+        <button
+          mat-menu-item
+          (click)="navigateToRoute('cat')"
+          *ngIf="userSessionService.isAuthenticated()"
+        >
+          My Cat
+        </button>
         <!-- <button mat-menu-item (click)="navigateToRoute('theme')">
 			Theme
 		  </button> -->
-   
+
         <!-- <button mat-menu-item (click)="navigateToRoute('streaming')">
           Streaming
         </button>
@@ -47,19 +50,22 @@
         <button mat-menu-item [matMenuTriggerFor]="projectsMenu">
           Projects
         </button>
-        <button
-        mat-menu-item
-        (click)="navigateToRoute('user-mod')"
-      >
-        User Mod {{userModService.isDemoMode ? "(Demo)" : ""}}
-      </button>
-      <button mat-menu-item (click)="navigateToRoute('contact')">
-        Contact
-      </button>
+        <button mat-menu-item (click)="navigateToRoute('user-mod')">
+          User Mod {{ userModService.isDemoMode ? "(Demo)" : "" }}
+        </button>
+        <button mat-menu-item (click)="navigateToRoute('contact')">
+          Contact
+        </button>
         <!-- <button mat-menu-item [matMenuTriggerFor]="otherMenu">Other</button> -->
       </mat-menu>
 
       <mat-menu #projectsMenu="matMenu" xPosition="before">
+        <button
+          mat-menu-item
+          (click)="navigateToRoute('projects/personal/website')"
+        >
+          This Website
+        </button>
         <button
           mat-menu-item
           (click)="navigateToRoute('projects/personal/raspberry-pi-canvas')"
@@ -181,7 +187,6 @@
               </button>
             </mat-grid-tile>
           </mat-grid-list>
-
         </mat-menu>
       </div>
 
@@ -208,13 +213,13 @@
           <mat-divider></mat-divider>
           <div class="version-num">
             <!-- <h4>{{userSessionService.getUser().roleString}}</h4> -->
-            <label>Version {{"1.0"}}</label>
+            <label>Version {{ "1.0" }}</label>
           </div>
         </mat-menu>
         <mat-menu #loggedInMenu [overlapTrigger]="false" yPosition="below">
           <div class="current-user-label">
-            <h4>{{userSessionService.getUser().roleString}}</h4>
-            <label>{{ this.userSessionService.getUser().username}}</label>
+            <h4>{{ userSessionService.getUser().roleString }}</h4>
+            <label>{{ this.userSessionService.getUser().username }}</label>
           </div>
           <mat-divider></mat-divider>
           <button mat-menu-item routerLink="/settings">
@@ -226,7 +231,7 @@
           <mat-divider></mat-divider>
           <div class="version-num">
             <!-- <h4>{{userSessionService.getUser().roleString}}</h4> -->
-            <label>Version {{"1.0"}}</label>
+            <label>Version {{ "1.0" }}</label>
           </div>
         </mat-menu>
       </div>
@@ -256,8 +261,7 @@
 	</mat-select>
   </mat-form-field> -->
 
-
-   <!-- <title>THIS IS A TEST OF TITLE</title>
+<!-- <title>THIS IS A TEST OF TITLE</title>
     <h1>THIS IS A TEST OF H1</h1>
     <h2>THIS IS A TEST OF H2</h2>
     <h3>THIS IS A TEST OF H3</h3>
@@ -271,4 +275,3 @@
     <label>THIS IS A TEST OF LABEL</label>
     <mat-label>THIS IS A TEST OF MAT-lABEL</mat-label>
     <li>THIS IS A TEST OF LI</li> -->
-    
