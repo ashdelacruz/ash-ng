@@ -589,6 +589,8 @@ export class ResetCredentialsComponent {
             this.spinnerService.stop();
 
             //TODO add 3sec timeout snackbar on success
+            this.router.navigate(['user-auth/login']);
+            this.snackBarService.showInfoSnackbar(resp.message);
 
           },
           error: err => {
