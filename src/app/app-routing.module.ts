@@ -14,6 +14,7 @@ import { SignupComponent } from './main/user-auth/signup/signup.component';
 import { UserModComponent } from './main/user-mod/user-mod.component';
 import { UserSettingsComponent } from './main/user-settings/user-settings.component';
 import { CatComponent } from './main/cat/cat.component';
+import { PersonalWebsiteComponent } from './main/projects/personal/personal-website/personal-website.component';
 
 export const routes: Routes = [
 	{
@@ -99,6 +100,10 @@ export const routes: Routes = [
 	{
 		path: 'projects/personal/raspberry-pi-canvas',
 		component: RpiCanvasComponent
+	},
+	{
+		path: 'projects/personal/website',
+		component: PersonalWebsiteComponent
 	},
 	{
 		path: 'projects/work',
